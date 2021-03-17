@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box } from '@material-ui/core'
+import { AppBar, Button, IconButton, Toolbar, Typography } from '@material-ui/core'
 
 interface NavBarProps {
 
@@ -7,8 +7,14 @@ interface NavBarProps {
 
 export const NavBar: React.FC<NavBarProps> = ({}) => {
     return (
-      <Box component='span'>
-        
-      </Box>
+      <AppBar position='static'>
+        <Toolbar>
+          <IconButton edge='start' >
+
+          </IconButton>
+          <Typography variant='h5' >ChefNotes</Typography>
+          <Button color='inherit'>Login</Button>
+        </Toolbar>
+      </AppBar>
     );
 }
