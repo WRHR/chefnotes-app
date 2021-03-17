@@ -72,6 +72,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export const NavBar: React.FC<NavBarProps> = ({}) => {
+  const classes = useStyles()
     return (
       <AppBar position='static'>
         <Toolbar>
