@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { NavBar } from "./components/NavBar";
 
 function App() {
+  const [user, setUser] = useState()
   // homepage
   // cookbook
   // add recipe
@@ -8,7 +10,7 @@ function App() {
   // search your recipes
   return (
     <div className="App">
-      <NavBar />
+      <NavBar user={user}/>
     </div>
   );
 }
