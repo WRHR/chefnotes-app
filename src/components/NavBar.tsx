@@ -13,9 +13,9 @@ import {
 import { Menu } from "@material-ui/icons";
 
 interface NavBarProps {
-  user: {
-    username: string;
-  };
+  // user: {
+  //   username: string;
+  // };
 }
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -83,7 +83,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export const NavBar: React.FC<NavBarProps> = ({ user }) => {
+export const NavBar: React.FC<NavBarProps> = ({  }) => {
   const classes = useStyles();
   return (
     <AppBar position="static">
@@ -92,7 +92,7 @@ export const NavBar: React.FC<NavBarProps> = ({ user }) => {
           <Menu />
         </IconButton>
         <Typography variant="h5">Chefnotes</Typography>
-        {user.username ? (
+        {true ? (
           <Button>Logout</Button>
         ) : (
           <Button color="inherit">Login</Button>
