@@ -1,0 +1,3 @@
+mutation DeleteBaseRecipe($id: Int!){
+  deleteBaseReciep(id:$id)
+}
