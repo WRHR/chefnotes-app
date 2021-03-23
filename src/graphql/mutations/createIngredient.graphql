@@ -1,0 +1,8 @@
+mutation CreateIngredient ($input:IngredientInput, $base:Boolean!, recipeId:Int!){
+  createIngredient(input:$input, base:$base, recipeId:$recipeId){
+    id
+    name
+    quantity
+    recipeId
+  }
+}
