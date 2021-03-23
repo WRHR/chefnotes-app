@@ -1,0 +1,7 @@
+mutation CreateBaseRecipe($input: RecipeInput){
+  createBaseRecipe(input:$input){
+    id
+    name
+    description
+  }
+}
