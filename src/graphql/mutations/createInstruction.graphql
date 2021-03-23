@@ -1,0 +1,8 @@
+mutation CreateInstruction($input:InstructionInput, $base:Boolean, $recipeId:Int){
+  createInstruction(input:$input, base:$base, recipeId:$recipeId){
+    id
+    description
+    position
+    recipeId
+  }
+}
