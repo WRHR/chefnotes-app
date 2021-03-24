@@ -1,0 +1,8 @@
+mutation UpdateIngredient($id:Int, $input:IngredientInput){
+  updateIngredient(id:$id, input:$input){
+    id
+    name
+    quantity
+    recipeId
+  }
+}

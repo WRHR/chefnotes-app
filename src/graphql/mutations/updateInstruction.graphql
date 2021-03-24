@@ -1,0 +1,8 @@
+mutation UpdateInstruction($id:Int, $input:InstructionInput){
+  updateInstruction(id:$id, input:$input){
+    id
+    position
+    description
+    recipeId
+  }
+}
