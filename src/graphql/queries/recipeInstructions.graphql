@@ -1,0 +1,8 @@
+query RecipeInstructions($id: Int) {
+  recipeInstructions(recipeId: $id) {
+    id
+    position
+    description
+    recipeId
+  }
+}
