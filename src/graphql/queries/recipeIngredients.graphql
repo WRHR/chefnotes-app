@@ -1,0 +1,7 @@
+query RecipeIngredients($id: Int) {
+  recipeIngredients(recipeId: $id) {
+    id
+    name
+    quantity
+  }
+}
