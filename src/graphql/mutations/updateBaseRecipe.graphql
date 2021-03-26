@@ -1,4 +1,4 @@
-mutation UpdateBaseRecipe($id:Int!, $name:String!, $decription:String!){
+mutation UpdateBaseRecipe($id:Int!, $name:String!, $description:String!){
   updateBaseRecipe(id:$id, name:$name, description:$description){
     id,
     name,

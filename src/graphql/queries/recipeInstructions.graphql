@@ -1,4 +1,4 @@
-query RecipeInstructions($id: Int, $original:Boolean) {
+query RecipeInstructions($id: Int!, $original:Boolean!) {
   recipeInstructions(recipeId: $id, original:$original) {
     id
     position

@@ -28,7 +28,7 @@
     "build": "next build",
     "start": "next start",
     "generate": "graphql-codegen --config codegen.yml",
-    "gen":"graphql-codegen"
+    "gen": "graphql-codegen"
   },
   "eslintConfig": {
     "extends": [
@@ -50,12 +50,12 @@
   },
   "devDependencies": {
     "@graphql-codegen/cli": "1.21.3",
+    "@graphql-codegen/introspection": "^1.18.1",
     "@graphql-codegen/typescript": "1.21.1",
     "@graphql-codegen/typescript-operations": "1.17.15",
     "@graphql-codegen/typescript-react-apollo": "2.2.3",
     "@graphql-codegen/typescript-urql": "^2.0.5",
     "@types/node": "^14.14.36",
-    "typescript": "^4.2.3",
-    "@graphql-codegen/introspection": "1.18.1"
+    "typescript": "^4.2.3"
   }
 }
