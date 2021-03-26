@@ -3,6 +3,5 @@ query RecipeInstructions($id: Int, $original:Boolean) {
     id
     position
     description
-    recipeId
   }
 }

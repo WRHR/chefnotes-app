@@ -1,4 +1,4 @@
-mutation CreateBaseRecipe($input: RecipeInput){
+mutation CreateBaseRecipe($input: RecipeInput!){
   createBaseRecipe(input:$input){
     id
     name

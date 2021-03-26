@@ -1,8 +1,11 @@
-mutation CreateInstruction($input:InstructionInput, $base:Boolean, $recipeId:Int){
-  createInstruction(input:$input, base:$base, recipeId:$recipeId){
+mutation CreateInstruction(
+  $input: InstructionInput!
+  $original: Boolean!
+  $recipeId: Int!
+) {
+  createInstruction(input: $input, original: $original, recipeId: $recipeId) {
     id
     description
     position
-    recipeId
   }
 }

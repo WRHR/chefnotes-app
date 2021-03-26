@@ -1,8 +1,11 @@
-mutation CreateIngredient ($input:IngredientInput, $base:Boolean!, recipeId:Int!){
-  createIngredient(input:$input, base:$base, recipeId:$recipeId){
+mutation CreateIngredient(
+  $input: IngredientInput!
+  $original: Boolean!
+  $recipeId: Int!
+) {
+  createIngredient(input: $input, original: $original, recipeId: $recipeId) {
     id
     name
     quantity
-    recipeId
   }
 }
