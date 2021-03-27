@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "@material-ui/core";
 import { Form, Formik } from "formik";
-import { useLoginMutation } from "../generated/graphql";
+import { MeQuery, useLoginMutation } from "../generated/graphql";
 
 interface Values {
   usernameOrEmail: string;
@@ -9,6 +9,7 @@ interface Values {
 }
 
 export const login: React.FC = ({}) => {
+  const [login] = useLoginMutation()
   return (
     <Box>
       <Formik
@@ -16,9 +17,20 @@ export const login: React.FC = ({}) => {
           usernameOrEmail: "",
           password: "",
         }}
-        onSubmit={(values:Values, useLoginMutation())}
+        onSubmit={async (values, {setErrors}) =>{
+            const response = await login({
+                variables:values
+                
+                }
+            })
+        }}
       >
-        <Form></Form>
+          {({isSubmitting}) =>(
+
+        <Form>
+            
+        </Form>
+          )}
       </Formik>
     </Box>
   );
