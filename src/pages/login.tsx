@@ -1,15 +1,17 @@
 import React from "react";
-import { Box } from "@material-ui/core";
+import { Box, Button, CircularProgress } from "@material-ui/core";
 import { Form, Formik } from "formik";
 import { MeQuery, useLoginMutation } from "../generated/graphql";
 import { InputField } from "../components/InputField";
-
+import { useRouter } from "next/router";
+import { toErrorMap } from "../utils/toErrorMap";
 interface Values {
   usernameOrEmail: string;
   password: string;
 }
 
 export const login: React.FC = ({}) => {
+  const router = useRouter()
   const [login] = useLoginMutation();
   return (
     <Box>
@@ -22,6 +24,15 @@ export const login: React.FC = ({}) => {
           const response = await login({
             variables: values,
           });
+          if(response.data?.login.errors){
+            setErrors(toErrorMap(response.data.login.errors))
+          } else if (response.data?.login.user){
+            if(typeof router.query.next === 'string'){
+              router.push(router.query.next)
+            } else {
+              router.push('/')
+            }
+          }
         }}
       >
         {({ isSubmitting }) => (
@@ -37,6 +48,7 @@ export const login: React.FC = ({}) => {
               type="password"
               placeholder="Password"
             />
+            {isSubmitting?<Button >login</Button>:<CircularProgress/>}
           </Form>
         )}
       </Formik>
