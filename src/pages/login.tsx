@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Button, CircularProgress } from "@material-ui/core";
 import { Form, Formik } from "formik";
-import { MeQuery, useLoginMutation } from "../generated/graphql";
+import { MeDocument, MeQuery, useLoginMutation } from "../generated/graphql";
 import { InputField } from "../components/InputField";
 import { useRouter } from "next/router";
 import { toErrorMap } from "../utils/toErrorMap";
@@ -11,7 +11,7 @@ interface Values {
 }
 
 export const login: React.FC = ({}) => {
-  const router = useRouter()
+  const router = useRouter();
   const [login] = useLoginMutation();
   return (
     <Box>
@@ -23,14 +23,23 @@ export const login: React.FC = ({}) => {
         onSubmit={async (values, { setErrors }) => {
           const response = await login({
             variables: values,
+            update: (cache, { data }) => {
+              cache.writeQuery<MeQuery>({
+                query: MeDocument,
+                data: {
+                  __typename: "Query",
+                  me: data?.login.user,
+                },
+              });
+            },
           });
-          if(response.data?.login.errors){
-            setErrors(toErrorMap(response.data.login.errors))
-          } else if (response.data?.login.user){
-            if(typeof router.query.next === 'string'){
-              router.push(router.query.next)
+          if (response.data?.login.errors) {
+            setErrors(toErrorMap(response.data.login.errors));
+          } else if (response.data?.login.user) {
+            if (typeof router.query.next === "string") {
+              router.push(router.query.next);
             } else {
-              router.push('/')
+              router.push("/");
             }
           }
         }}
@@ -48,7 +57,7 @@ export const login: React.FC = ({}) => {
               type="password"
               placeholder="Password"
             />
-            {isSubmitting?<Button >login</Button>:<CircularProgress/>}
+            {isSubmitting ? <Button>login</Button> : <CircularProgress />}
           </Form>
         )}
       </Formik>
