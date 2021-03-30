@@ -11,6 +11,8 @@ import {
   fade,
 } from "@material-ui/core";
 import { Menu } from "@material-ui/icons";
+import {useRouter} from 'next/router'
+import { useLogoutMutation, useMeQuery } from "../generated/graphql";
 
 interface NavBarProps {
   // user: {
@@ -85,6 +87,9 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export const NavBar: React.FC<NavBarProps> = ({  }) => {
   const classes = useStyles();
+  const router = useRouter()
+  const [logout, {loading: logoutFetching}] = useLogoutMutation()
+  const {data, loading} = useMeQuery()
   return (
     <AppBar position="static">
       <Toolbar>
