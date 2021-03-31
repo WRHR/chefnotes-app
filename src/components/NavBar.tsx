@@ -13,6 +13,7 @@ import {
 import { Menu } from "@material-ui/icons";
 import {useRouter} from 'next/router'
 import { useLogoutMutation, useMeQuery } from "../generated/graphql";
+import { useApolloClient } from "@apollo/client";
 
 interface NavBarProps {
   // user: {
@@ -90,6 +91,11 @@ export const NavBar: React.FC<NavBarProps> = ({  }) => {
   const router = useRouter()
   const [logout, {loading: logoutFetching}] = useLogoutMutation()
   const {data, loading} = useMeQuery()
+  const apolloClient =useApolloClient()
+
+  if(!data){
+    router.push('/login')
+  }
   return (
     <AppBar position="static">
       <Toolbar>
@@ -97,11 +103,11 @@ export const NavBar: React.FC<NavBarProps> = ({  }) => {
           <Menu />
         </IconButton>
         <Typography variant="h5">Chefnotes</Typography>
-        {true ? (
-          <Button>Logout</Button>
-        ) : (
-          <Button color="inherit">Login</Button>
-        )}
+        <Button onClick={async ()=>{
+          await logout
+          await apolloClient.resetStore()
+          router.push('/login')
+        }}>Logout</Button>
       </Toolbar>
     </AppBar>
   );
