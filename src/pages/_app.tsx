@@ -1,13 +1,16 @@
-import { Box } from "@material-ui/core";
-import { useState } from "react";
-import { NavBar } from "../components/NavBar";
-import { RecipeCard } from "../components/RecipeCard";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
-function App({Component, pageProps}:any) {
+const client = new ApolloClient({
+  uri: "http://localhost:4000/graphql",
+  cache: new InMemoryCache(),
+});
+function App({ Component, pageProps }: any) {
   return (
-    <div className="App">
-      <Component {...pageProps} />
-    </div>
+    <ApolloProvider client={client}>
+      <div className="App">
+        <Component {...pageProps} />
+      </div>
+    </ApolloProvider>
   );
 }
 

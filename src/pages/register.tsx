@@ -5,7 +5,8 @@ import { Box, Button, CircularProgress } from "@material-ui/core";
 import { Form, Formik } from "formik";
 import { toErrorMap } from "../utils/toErrorMap";
 import { InputField } from "../components/InputField";
-export const register: React.FC = ({}) => {
+
+const register: React.FC = ({}) => {
   const router = useRouter();
   const [register] = useRegisterMutation();
 
@@ -52,9 +53,9 @@ export const register: React.FC = ({}) => {
               />
             </Box>
             {isSubmitting ? (
-              <Button type="submit">register</Button>
-            ) : (
               <CircularProgress />
+            ) : (
+              <Button type="submit">register</Button>
             )}
           </Form>
         )}
@@ -62,3 +63,4 @@ export const register: React.FC = ({}) => {
     </Box>
   );
 };
+export default register;

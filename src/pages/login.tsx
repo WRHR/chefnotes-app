@@ -10,7 +10,7 @@ interface Values {
   password: string;
 }
 
-export const login: React.FC = ({}) => {
+const login: React.FC = ({}) => {
   const router = useRouter();
   const [login] = useLoginMutation();
   return (
@@ -57,10 +57,12 @@ export const login: React.FC = ({}) => {
               type="password"
               placeholder="Password"
             />
-            {isSubmitting ? <Button>login</Button> : <CircularProgress />}
+            {isSubmitting ?   <CircularProgress />:<Button>login</Button>}
           </Form>
         )}
       </Formik>
     </Box>
   );
 };
+
+export default login
