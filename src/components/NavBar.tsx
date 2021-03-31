@@ -93,9 +93,6 @@ export const NavBar: React.FC<NavBarProps> = ({  }) => {
   const {data, loading} = useMeQuery()
   const apolloClient =useApolloClient()
 
-  if(!data){
-    router.push('/login')
-  }
   return (
     <AppBar position="static">
       <Toolbar>
