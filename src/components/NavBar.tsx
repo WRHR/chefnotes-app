@@ -11,14 +11,13 @@ import {
   fade,
 } from "@material-ui/core";
 import { Menu } from "@material-ui/icons";
-import {useRouter} from 'next/router'
-import { useLogoutMutation, useMeQuery } from "../generated/graphql";
+import {NextRouter} from 'next/router'
+import { MeQuery, useLogoutMutation, useMeQuery } from "../generated/graphql";
 import { useApolloClient } from "@apollo/client";
 
 interface NavBarProps {
-  // user: {
-  //   username: string;
-  // };
+  router:NextRouter
+  user:MeQuery|undefined
 }
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -86,12 +85,13 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export const NavBar: React.FC<NavBarProps> = ({  }) => {
+export const NavBar: React.FC<NavBarProps> = ({ router, user }) => {
   const classes = useStyles();
-  const router = useRouter()
   const [logout, {loading: logoutFetching}] = useLogoutMutation()
-  const {data, loading} = useMeQuery()
+  
   const apolloClient =useApolloClient()
+
+  if(!user){router.push('/login')}
 
   return (
     <AppBar position="static">
