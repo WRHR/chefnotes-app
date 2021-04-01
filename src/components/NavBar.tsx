@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   AppBar,
   Button,
@@ -90,8 +90,12 @@ export const NavBar: React.FC<NavBarProps> = ({ router, user }) => {
   const [logout, {loading: logoutFetching}] = useLogoutMutation()
   
   const apolloClient =useApolloClient()
-
-  if(!user){router.push('/login')}
+  useEffect(()=>{
+    if(!user){
+      router.push('/login')
+     
+    }
+  })
 
   return (
     <AppBar position="static">
