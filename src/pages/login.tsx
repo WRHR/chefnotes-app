@@ -1,16 +1,35 @@
 import React from "react";
-import { Box, Button, CircularProgress } from "@material-ui/core";
+import {
+  Box,
+  Button,
+  CircularProgress,
+  createStyles,
+  makeStyles,
+  Paper,
+  Theme,
+} from "@material-ui/core";
 import { Form, Formik } from "formik";
 import { MeDocument, MeQuery, useLoginMutation } from "../generated/graphql";
 import { InputField } from "../components/InputField";
 import { useRouter } from "next/router";
 import { toErrorMap } from "../utils/toErrorMap";
+
 interface Values {
   usernameOrEmail: string;
   password: string;
 }
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    container: {
+      display: "flex",
+      flexDirection: "column",
+    },
+  })
+);
+
 const login: React.FC = ({}) => {
+  const classes = useStyles();
   const router = useRouter();
   const [login] = useLoginMutation();
   return (
@@ -46,18 +65,20 @@ const login: React.FC = ({}) => {
       >
         {({ isSubmitting }) => (
           <Form>
-            <InputField
-              lable="Username or Email"
-              name="usernameOrEmail"
-              placeholder="Username or Email"
-            />
-            <InputField
-              name="password"
-              lable="Password"
-              type="password"
-              placeholder="Password"
-            />
-            {isSubmitting ?   <CircularProgress />:<Button>login</Button>}
+            <Box className={classes.container}>
+              <InputField
+                lable="Username or Email"
+                name="usernameOrEmail"
+                placeholder="Username or Email"
+              />
+              <InputField
+                name="password"
+                lable="Password"
+                type="password"
+                placeholder="Password"
+              />
+              {isSubmitting ? <CircularProgress /> : <Button>login</Button>}
+            </Box>
           </Form>
         )}
       </Formik>
@@ -65,4 +86,4 @@ const login: React.FC = ({}) => {
   );
 };
 
-export default login
+export default login;
