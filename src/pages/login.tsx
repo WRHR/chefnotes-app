@@ -24,9 +24,14 @@ const useStyles = makeStyles((theme: Theme) =>
     container: {
       display: "flex",
       flexDirection: "column",
-      
-      
+      alignItems:'center',
+      marginTop:"20%"      
     },
+    page:{
+      height:'100vh',
+      width:'100vw',
+
+    }
   })
 );
 
@@ -35,7 +40,7 @@ const login: React.FC = ({}) => {
   const router = useRouter();
   const [login] = useLoginMutation();
   return (
-    <Box>
+    <Box className={classes.page}>
       <Formik
         initialValues={{
           usernameOrEmail: "",
