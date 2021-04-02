@@ -24,6 +24,8 @@ const useStyles = makeStyles((theme: Theme) =>
     container: {
       display: "flex",
       flexDirection: "column",
+      
+      
     },
   })
 );
@@ -77,7 +79,7 @@ const login: React.FC = ({}) => {
                 type="password"
                 placeholder="Password"
               />
-              {isSubmitting ? <CircularProgress /> : <Button>login</Button>}
+              {isSubmitting ? <CircularProgress /> : <Button type='submit'>login</Button>}
             </Box>
           </Form>
         )}

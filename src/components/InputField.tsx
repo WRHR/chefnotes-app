@@ -1,6 +1,7 @@
 import React, { InputHTMLAttributes } from "react";
 import { useField } from "formik";
 import {
+  Box,
   FormControl,
   FormControlLabel,
   InputLabel,
@@ -21,9 +22,11 @@ export const InputField: React.FC<InputFieldProps> = ({
 }) => {
   const [field, { error }] = useField(props);
   return (
-    <FormControl>
-      <InputLabel htmlFor={field.name}>{lable}</InputLabel>
-      <TextField error multiline={textarea} {...field} id={field.name} />
-    </FormControl>
+    <Box width='200px' margin='10px'>
+      <FormControl>
+        <InputLabel htmlFor={field.name}>{lable}</InputLabel>
+        <TextField error multiline={textarea} {...field} id={field.name} />
+      </FormControl>
+    </Box>
   );
 };
