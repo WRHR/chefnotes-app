@@ -7,6 +7,7 @@ import {
   makeStyles,
   Paper,
   Theme,
+  Typography
 } from "@material-ui/core";
 import { Form, Formik } from "formik";
 import { MeDocument, MeQuery, useLoginMutation } from "../generated/graphql";
@@ -28,8 +29,8 @@ const useStyles = makeStyles((theme: Theme) =>
       marginTop:"20%"      
     },
     page:{
-      height:'100vh',
-      width:'100vw',
+      height:'100%',
+      width:'100%',
 
     }
   })
@@ -85,6 +86,7 @@ const login: React.FC = ({}) => {
                 placeholder="Password"
               />
               {isSubmitting ? <CircularProgress /> : <Button type='submit'>login</Button>}
+              <Typography >Need an account? <a href='/register'>Click Here</a></Typography>
             </Box>
           </Form>
         )}
