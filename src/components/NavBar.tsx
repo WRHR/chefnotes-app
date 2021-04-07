@@ -21,7 +21,6 @@ interface NavBarProps {
 }
 
 export const NavBar: React.FC<NavBarProps> = ({ router, user }) => {
-  const classes = useStyles();
   const [logout, {loading: logoutFetching}] = useLogoutMutation()
   
   const apolloClient =useApolloClient()
