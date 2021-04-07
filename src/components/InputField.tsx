@@ -26,7 +26,7 @@ export const InputField: React.FC<InputFieldProps> = ({
   return (
     <Box width='200px' margin='10px'>
       <FormControl>
-        <InputLabel margin='normal' htmlFor={field.name}>{lable}</InputLabel>
+        <InputLabel htmlFor={field.name}>{lable}</InputLabel>
         <TextField type={type} error={!!error} margin='normal' multiline={textarea} {...field} id={field.name} />
       </FormControl>
     </Box>
