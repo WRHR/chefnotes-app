@@ -10,34 +10,20 @@ import {
 } from "@chakra-ui/react";
 
 type InputFieldProps = InputHTMLAttributes<HTMLInputElement> & {
-  lable: string;
+  label: string;
   name: string;
-  textarea?: boolean;
 };
 
 export const InputField: React.FC<InputFieldProps> = ({
-  lable,
-  textarea,
+  label,
   size: _,
-  type,
   ...props
 }) => {
-  let InputOrTextarea = Input;
-  if (textarea) {
-    InputOrTextarea = Textarea;
-  }
   const [field, { error }] = useField(props);
   return (
-    <FormControl>
-      <FormLabel htmlFor={field.name}>{lable}</FormLabel>
-      <InputOrTextarea
-        type={type}
-        error={!!error}
-        margin="normal"
-        multiline={textarea}
-        {...field}
-        id={field.name}
-      />
+    <FormControl isInvalid={!!error}>
+      <FormLabel htmlFor={field.name}>{label}</FormLabel>
+      <Input {...field} {...props} id={field.name} />
       {error ? <FormErrorMessage>{error}</FormErrorMessage> : null}
     </FormControl>
   );
