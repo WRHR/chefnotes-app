@@ -1,14 +1,4 @@
 import React, { useEffect } from "react";
-import {
-  AppBar,
-  IconButton,
-  makeStyles,
-  createStyles,
-  Theme,
-  Toolbar,
-  Typography,
-  fade,
-} from "@material-ui/core";
 import { Box, Button, Flex, Center } from "@chakra-ui/react";
 import { Menu } from "@material-ui/icons";
 import { NextRouter } from "next/router";
