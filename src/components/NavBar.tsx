@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Box, Button, Flex, Center } from "@chakra-ui/react";
+import { Box, Button, Flex, Center, Text } from "@chakra-ui/react";
 import { Menu } from "@material-ui/icons";
 import { NextRouter } from "next/router";
 import { MeQuery, useLogoutMutation, useMeQuery } from "../generated/graphql";
@@ -23,7 +23,7 @@ export const NavBar: React.FC<NavBarProps> = ({ router, user }) => {
   return (
     <Flex>
       <Center>
-        <Typography variant="h5">Chefnotes</Typography>
+        <Text>Chefnotes</Text>
       </Center>
       <Button
         onClick={async () => {
