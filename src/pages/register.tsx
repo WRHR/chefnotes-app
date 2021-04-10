@@ -35,7 +35,7 @@ const register: React.FC = ({}) => {
         }}
       >
         {({ isSubmitting }) => (
-          <Box >
+          <Flex flexDir='column'>
             <Form>
               <InputField
                 name="username"
@@ -63,7 +63,7 @@ const register: React.FC = ({}) => {
             <Text>
               Already have an account? <a href="/login">Click Here</a>
             </Text>
-          </Box>
+          </Flex>
         )}
       </Formik>
     </Box>
