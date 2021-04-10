@@ -1,14 +1,5 @@
 import React from "react";
-import {
-  Box,
-  Button,
-  CircularProgress,
-  createStyles,
-  makeStyles,
-  Paper,
-  Theme,
-  Typography
-} from "@material-ui/core";
+import { Box, Flex, Text, Button } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import { MeDocument, MeQuery, useLoginMutation } from "../generated/graphql";
 import { InputField } from "../components/InputField";
@@ -20,28 +11,11 @@ interface Values {
   password: string;
 }
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    container: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems:'center',
-      marginTop:"20%"      
-    },
-    page:{
-      height:'100%',
-      width:'100%',
-
-    }
-  })
-);
-
 const login: React.FC = ({}) => {
-  const classes = useStyles();
   const router = useRouter();
   const [login] = useLoginMutation();
   return (
-    <Box className={classes.page}>
+    <Box >
       <Formik
         initialValues={{
           usernameOrEmail: "",
@@ -73,21 +47,28 @@ const login: React.FC = ({}) => {
       >
         {({ isSubmitting }) => (
           <Form>
-            <Box className={classes.container}>
+            <Flex flexDir='column' >
               <InputField
-                lable="Username or Email"
+                label="Username or Email"
                 name="usernameOrEmail"
                 placeholder="Username or Email"
               />
               <InputField
                 name="password"
-                lable="Password"
+                label="Password"
                 type="password"
                 placeholder="Password"
               />
-              {isSubmitting ? <CircularProgress /> : <Button type='submit'>login</Button>}
-              <Typography >Need an account? <a href='/register'>Click Here</a></Typography>
-            </Box>
+              <Button
+                type='submit'
+                isLoading={isSubmitting}
+              >
+                login
+              </Button>
+              <Text>
+                Need an account? <a href="/register">Click Here</a>
+              </Text>
+            </Flex>
           </Form>
         )}
       </Formik>
