@@ -1,41 +1,17 @@
 import React from "react";
 import { useRouter } from "next/router";
 import { MeDocument, MeQuery, useRegisterMutation } from "../generated/graphql";
-import {
-  Box,
-  Button,
-  CircularProgress,
-  createStyles,
-  makeStyles,
-  Theme,
-  Typography,
-} from "@material-ui/core";
+import { Box, Flex, Button, Text } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import { toErrorMap } from "../utils/toErrorMap";
 import { InputField } from "../components/InputField";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    container: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      marginTop: "20%",
-    },
-    page: {
-      height: "100%",
-      width: "100%",
-    },
-  })
-);
-
 const register: React.FC = ({}) => {
   const router = useRouter();
   const [register] = useRegisterMutation();
-  const classes = useStyles();
 
   return (
-    <Box className={classes.page}>
+    <Box >
       <Formik
         initialValues={{ email: "", username: "", password: "" }}
         onSubmit={async (values, { setErrors }) => {
@@ -59,33 +35,34 @@ const register: React.FC = ({}) => {
         }}
       >
         {({ isSubmitting }) => (
-          <Box className={classes.container}>
+          <Box >
             <Form>
               <InputField
                 name="username"
                 placeholder="Username"
-                lable="Username"
+                label="Username"
               />
               <Box mt={4}>
-                <InputField name="email" placeholder="Email" lable="Email" />
+                <InputField name="email" placeholder="Email" label="Email" />
               </Box>
               <Box mt={4}>
                 <InputField
                   name="password"
                   placeholder="Password"
-                  lable="Password"
+                  label="Password"
                   type="password"
                 />
               </Box>
-              {isSubmitting ? (
-                <CircularProgress />
-              ) : (
-                <Button type="submit">register</Button>
-              )}
+              <Button
+                type='submit'
+                isLoading={isSubmitting}
+              >
+                register
+              </Button>
             </Form>
-            <Typography>
+            <Text>
               Already have an account? <a href="/login">Click Here</a>
-            </Typography>
+            </Text>
           </Box>
         )}
       </Formik>
