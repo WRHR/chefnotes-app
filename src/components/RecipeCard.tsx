@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Card, CardActions, CardContent, Typography } from '@material-ui/core'
+import { Button, Text } from '@chakra-ui/react'
 
 interface RecipeCardProps {
 
@@ -9,12 +9,12 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({}) => {
     return (
       <Card>
         <CardContent>
-          <Typography>Recipe Name</Typography>
-          <Typography>Recipe decription</Typography>
+          <Text>Recipe Name</Text>
+          <Text>Recipe decription</Text>
         </CardContent>
-        <CardActions>
+    
           <Button>View Recipe</Button>
-        </CardActions>
+       
       </Card>
     );
 }
