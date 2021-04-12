@@ -1,3 +1,4 @@
+import { Box } from '@chakra-ui/layout';
 import React from 'react'
 import { useGetRecipeFromUrl } from '../utils/useGetRecipeFromUrl';
 
@@ -21,5 +22,8 @@ export const Recipe = ({}) => {
   }
     return (
       // base recipe data
+      <Box>
+        <Text>{data.baseRecipe.name}</Text>
+      </Box>
     );
 }
