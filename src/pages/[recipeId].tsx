@@ -1,7 +1,25 @@
 import React from 'react'
+import { useGetRecipeFromUrl } from '../utils/useGetRecipeFromUrl';
 
 
 
 export const Recipe = ({}) => {
-    return ();
+  const {data, error, loading} = useGetRecipeFromUrl()
+  
+  if(loading){
+    return (<div>loading...</div>)
+  }
+
+  if(error){
+    return <div>{error.message}</div>
+  }
+
+  if(!data?.baseRecipe){
+    return(
+      <div>Could not find recipe</div>
+    )
+  }
+    return (
+      // base recipe data
+    );
 }
