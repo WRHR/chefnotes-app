@@ -1,5 +1,6 @@
 import { Box } from '@chakra-ui/layout';
 import React from 'react'
+import { InstructionsList } from '../../components/InstructionsList';
 import { useRecipeIngredientsQuery, useRecipeInstructionsQuery } from '../../generated/graphql';
 import { useGetRecipeFromUrl } from '../../utils/useGetRecipeFromUrl';
 
@@ -22,17 +23,11 @@ export const Recipe = ({}) => {
     )
   }
 
-  if(data.baseRecipe){
-    let baseOptions = {
-      id:data.baseRecipe.id,
-      original:true
-    }
-    const {data, loading, error} = useRecipeIngredientsQuery()
-  }
     return (
       // base recipe data
       <Box>
         <Text>{data.baseRecipe.name}</Text>
+        <InstructionsList id={data.baseRecipe.id} original={true} />
       </Box>
     );
 }
