@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/layout';
+import { Box, Text } from '@chakra-ui/layout';
 import React from 'react'
 import { InstructionsList } from '../../components/InstructionsList';
 import { useRecipeIngredientsQuery, useRecipeInstructionsQuery } from '../../generated/graphql';
@@ -23,6 +23,7 @@ export const Recipe = ({}) => {
     )
   }
 
+  
     return (
       // base recipe data
       <Box>
