@@ -1,11 +1,6 @@
-import { QueryHookOptions } from "@apollo/client";
 import { Box, Text } from "@chakra-ui/layout";
 import React from "react";
-import {
-  Exact,
-  RecipeInstructionsQuery,
-  useRecipeInstructionsQuery,
-} from "../generated/graphql";
+import { useRecipeInstructionsQuery } from "../generated/graphql";
 
 interface InstructionsListProps {
   id: number;
