@@ -1,6 +1,6 @@
 import { Box } from '@chakra-ui/layout';
 import React from 'react'
-import { useGetRecipeFromUrl } from '../utils/useGetRecipeFromUrl';
+import { useGetRecipeFromUrl } from '../../utils/useGetRecipeFromUrl';
 
 
 
