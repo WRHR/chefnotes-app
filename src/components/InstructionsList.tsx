@@ -16,12 +16,12 @@ export const InstructionsList: React.FC<InstructionsListProps> = ({
   id,
   original,
 }) => {
-  const baseOptions: QueryHookOptions<
-    RecipeInstructionsQuery,
-    Exact<{ id: number; original: boolean }>
-  > = { id, original };
-
-  const { data, loading, error } = useRecipeInstructionsQuery(baseOptions);
+  const { data, loading, error } = useRecipeInstructionsQuery({
+    variables: {
+      id,
+      original,
+    },
+  });
 
   let instructionMap = data?.recipeInstructions.map((instruction) => {
     return (
