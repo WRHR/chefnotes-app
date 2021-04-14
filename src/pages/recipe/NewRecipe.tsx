@@ -9,12 +9,13 @@ interface NewRecipeProps {}
 
 export const NewRecipe: React.FC<NewRecipeProps> = ({}) => {
   const router = useRouter();
+  const [createRecipe] = useCreateBaseRecipeMutation()
   return (
     <Box>
       <Formik
         initialValues={{ name: "", description: "" }}
         onSubmit={async (values) => {
-          const { errors } = await useCreateBaseRecipeMutation({
+          const { errors } = await createRecipe({
             variables: { input: values },
           });
           if (!errors) {
