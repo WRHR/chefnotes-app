@@ -18,7 +18,7 @@ export const InstructionsList: React.FC<InstructionsListProps> = ({
     },
   });
 
-  let instructionMap = data?.recipeInstructions.map((instruction) => {
+  const instructionMap = data?.recipeInstructions.map((instruction) => {
     return (
       <Text>
         {instruction.position} {instruction.description}
