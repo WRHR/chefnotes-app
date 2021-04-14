@@ -1,5 +1,6 @@
 import { Box, Text } from "@chakra-ui/layout";
 import React from "react";
+import { IngredientList } from "../../components/IngredientList";
 import { InstructionsList } from "../../components/InstructionsList";
 import { useGetRecipeFromUrl } from "../../utils/useGetRecipeFromUrl";
 
@@ -23,6 +24,7 @@ export const Recipe = ({}) => {
     <Box>
       <Text>{data.baseRecipe.name}</Text>
       <InstructionsList id={data.baseRecipe.id} original={true} />
+      <IngredientList id={data.baseRecipe.id} original={true} />
     </Box>
   );
 };
