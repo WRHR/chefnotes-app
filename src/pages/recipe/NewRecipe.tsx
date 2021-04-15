@@ -15,11 +15,12 @@ export const NewRecipe: React.FC<NewRecipeProps> = ({}) => {
       <Formik
         initialValues={{ name: "", description: "" }}
         onSubmit={async (values) => {
-          const { errors } = await createRecipe({
+          const { errors, data } = await createRecipe({
             variables: { input: values },
           });
           if (!errors) {
-            router.push("/");
+            console.log(data?.createBaseRecipe.id)
+            router.push(`${data?.createBaseRecipe.id}`);
           }
         }}
       >
