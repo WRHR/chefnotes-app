@@ -20,7 +20,7 @@ export const NewRecipe: React.FC<NewRecipeProps> = ({}) => {
           });
           if (!errors) {
             console.log(data?.createBaseRecipe.id)
-            router.push(`${data?.createBaseRecipe.id}`);
+            router.push(`/recipe/${data?.createBaseRecipe.id}`);
           }
         }}
       >
