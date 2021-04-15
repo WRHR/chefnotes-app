@@ -1,21 +1,21 @@
 import React, { useEffect } from "react";
 import { Box, Button, Flex, Center, Text } from "@chakra-ui/react";
-import { Menu } from "@material-ui/icons";
-import { NextRouter } from "next/router";
+import { useRouter } from "next/router";
 import { MeQuery, useLogoutMutation, useMeQuery } from "../generated/graphql";
 import { useApolloClient } from "@apollo/client";
 
 interface NavBarProps {
-  router: NextRouter;
-  user: MeQuery | undefined;
+ 
 }
 
-export const NavBar: React.FC<NavBarProps> = ({ router, user }) => {
+export const NavBar: React.FC<NavBarProps> = ({ }) => {
   const [logout, { loading: logoutFetching }] = useLogoutMutation();
+  const {data, loading} = useMeQuery()
+  const router = useRouter()
 
   const apolloClient = useApolloClient();
   useEffect(() => {
-    if (!user) {
+    if (!data?.me) {
       router.push("/login");
     }
   });
@@ -23,7 +23,7 @@ export const NavBar: React.FC<NavBarProps> = ({ router, user }) => {
   return (
     <Flex>
       <Center>
-        <Text>Chefnotes</Text>
+        <Text><a href='/'>Chefnotes</a></Text>
       </Center>
       <Button
         onClick={async () => {
