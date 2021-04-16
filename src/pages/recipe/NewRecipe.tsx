@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { useCreateBaseRecipeMutation } from "../../generated/graphql";
 import { InputField } from "../../components/InputField";
 import { NavBar } from "../../components/NavBar";
+import { Layout } from "../../components/Layout";
 
 interface NewRecipeProps {}
 
@@ -12,8 +13,7 @@ export const NewRecipe: React.FC<NewRecipeProps> = ({}) => {
   const router = useRouter();
   const [createRecipe] = useCreateBaseRecipeMutation();
   return (
-    <Box>
-      <NavBar />
+    <Layout>
       <Formik
         initialValues={{ name: "", description: "" }}
         onSubmit={async (values) => {
@@ -46,6 +46,6 @@ export const NewRecipe: React.FC<NewRecipeProps> = ({}) => {
           </Form>
         )}
       </Formik>
-    </Box>
+    </Layout>
   );
 };
