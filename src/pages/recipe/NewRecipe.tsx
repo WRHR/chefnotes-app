@@ -4,7 +4,6 @@ import { Box, Button } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useCreateBaseRecipeMutation } from "../../generated/graphql";
 import { InputField } from "../../components/InputField";
-import { NavBar } from "../../components/NavBar";
 import { Layout } from "../../components/Layout";
 
 interface NewRecipeProps {}

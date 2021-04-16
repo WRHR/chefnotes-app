@@ -3,7 +3,6 @@ import React from "react";
 import { IngredientList } from "../../components/IngredientList";
 import { InstructionsList } from "../../components/InstructionsList";
 import { Layout } from "../../components/Layout";
-import { NavBar } from "../../components/NavBar";
 import { useGetRecipeFromUrl } from "../../utils/useGetRecipeFromUrl";
 
 export const Recipe = ({}) => {
