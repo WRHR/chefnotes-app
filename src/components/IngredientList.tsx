@@ -12,7 +12,10 @@ export const IngredientList: React.FC<IngredientListProps> = ({id, original}) =>
 
   const ingregientMap = data?.recipeIngredients.map((ingredient)=>{
     return(
-      <ListItem>{ingredient.quantity} {ingredient.quantity} {ingredient.name}</ListItem>
+      <ListItem>
+        {ingredient.quantity} {ingredient.name}
+        {/* on click modify options */}
+        </ListItem>
     )
   })
     return (

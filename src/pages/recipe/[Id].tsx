@@ -24,8 +24,13 @@ export const Recipe = ({}) => {
     // base recipe data
     <Layout>
       <Text>{data.baseRecipe.name}</Text>
+      {/* On Click Modifications Accordian?
+          Add Modification
+      */}
       <InstructionsList id={data.baseRecipe.id} original={true} />
+      {/* Add Instruction */}
       <IngredientList id={data.baseRecipe.id} original={true} />
+      {/* Add Ingredient */}
     </Layout>
   );
 };

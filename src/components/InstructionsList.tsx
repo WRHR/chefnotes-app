@@ -23,6 +23,7 @@ export const InstructionsList: React.FC<InstructionsListProps> = ({
     return (
       <ListItem>
         {instruction.position} {instruction.description}
+        {/* ON Click Modify options */}
       </ListItem>
     );
   });
