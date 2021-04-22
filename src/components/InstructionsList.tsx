@@ -1,6 +1,6 @@
 import { Box, ListItem, Text } from "@chakra-ui/layout";
 import { List } from "@material-ui/icons";
-import React from "react";
+import React, { useState } from "react";
 import { useRecipeInstructionsQuery } from "../generated/graphql";
 
 interface InstructionsListProps {
@@ -12,6 +12,7 @@ export const InstructionsList: React.FC<InstructionsListProps> = ({
   id,
   original,
 }) => {
+  const [selectedInstruction, useSelectedInstruction] = useState(0)
   const { data, loading, error } = useRecipeInstructionsQuery({
     variables: {
       id,
@@ -21,9 +22,10 @@ export const InstructionsList: React.FC<InstructionsListProps> = ({
 
   const instructionMap = data?.recipeInstructions.map((instruction) => {
     return (
-      <ListItem>
+      <ListItem onClick={()=>useSelectedInstruction(instruction.id)}>
         {instruction.position} {instruction.description}
         {/* ON Click Modify options */}
+        {selectedInstruction===instruction.id ? <Box>Edit Options</Box>:null}
       </ListItem>
     );
   });
