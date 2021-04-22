@@ -12,7 +12,7 @@ export const InstructionsList: React.FC<InstructionsListProps> = ({
   id,
   original,
 }) => {
-  const [selectedInstruction, useSelectedInstruction] = useState(0)
+  const [selectedInstruction, useSelectedInstruction] = useState(0);
   const { data, loading, error } = useRecipeInstructionsQuery({
     variables: {
       id,
@@ -22,10 +22,12 @@ export const InstructionsList: React.FC<InstructionsListProps> = ({
 
   const instructionMap = data?.recipeInstructions.map((instruction) => {
     return (
-      <ListItem onClick={()=>useSelectedInstruction(instruction.id)}>
+      <ListItem onClick={() => useSelectedInstruction(instruction.id)}>
         {instruction.position} {instruction.description}
         {/* ON Click Modify options */}
-        {selectedInstruction===instruction.id ? <Box>Edit Options</Box>:null}
+        {selectedInstruction === instruction.id ? (
+          <Box>Edit Options</Box>
+        ) : null}
       </ListItem>
     );
   });

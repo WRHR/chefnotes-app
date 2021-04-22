@@ -5,7 +5,7 @@ interface RecipeCardProps {}
 
 export const RecipeCard: React.FC<RecipeCardProps> = ({}) => {
   return (
-    <Flex flexDir='column'>
+    <Flex flexDir="column">
       <Text>Recipe Name</Text>
       <Text>Recipe decription</Text>
 
