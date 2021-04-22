@@ -2,6 +2,7 @@ query RecipeIngredients($id: Int!, $original:Boolean!) {
   recipeIngredients(recipeId: $id, original:$original) {
     id
     name
+    measurement
     quantity
   }
 }
