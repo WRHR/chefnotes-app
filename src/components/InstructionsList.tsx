@@ -1,6 +1,7 @@
-import { Box, ListItem, OrderedList, Text } from "@chakra-ui/layout";
+import { Box, Flex, ListItem, OrderedList, Text } from "@chakra-ui/layout";
 import React, { useState } from "react";
 import { useRecipeInstructionsQuery } from "../generated/graphql";
+import { EditPanel } from "./EditPanel";
 
 interface InstructionsListProps {
   id: number;
@@ -24,11 +25,13 @@ export const InstructionsList: React.FC<InstructionsListProps> = ({
     .map((instruction) => {
       return (
         <ListItem onClick={() => useSelectedInstruction(instruction.id)}>
-          {instruction.description}
-          {/* ON Click Modify options */}
-          {selectedInstruction === instruction.id ? (
-            <Box>Edit Options</Box>
-          ) : null}
+          <Flex justifyContent="space-between">
+            {instruction.description}
+            {/* ON Click Modify options */}
+            {selectedInstruction === instruction.id ? (
+              <EditPanel />
+            ) : null}
+          </Flex>
         </ListItem>
       );
     });

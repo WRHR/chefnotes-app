@@ -1,6 +1,7 @@
 import { Box, List, ListItem, Text } from "@chakra-ui/layout";
 import React, { useState } from "react";
 import { useRecipeIngredientsQuery } from "../generated/graphql";
+import { EditPanel } from "./EditPanel";
 
 interface IngredientListProps {
   id: number;
@@ -21,7 +22,7 @@ export const IngredientList: React.FC<IngredientListProps> = ({
       <ListItem onClick={() => useSelectedIngredient(ingredient.id)}>
         {ingredient.quantity} {ingredient.name}
         {/* on click modify options */}
-        {selectedIngredient === ingredient.id ? <Box>Edit options</Box> : null}
+        {selectedIngredient === ingredient.id ? <EditPanel /> : null}
       </ListItem>
     );
   });
