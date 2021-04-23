@@ -1,4 +1,4 @@
-import { Box, ListItem, Text } from "@chakra-ui/layout";
+import { Box, ListItem, OrderedList, Text } from "@chakra-ui/layout";
 import { List } from "@material-ui/icons";
 import React, { useState } from "react";
 import { useRecipeInstructionsQuery } from "../generated/graphql";
@@ -20,21 +20,23 @@ export const InstructionsList: React.FC<InstructionsListProps> = ({
     },
   });
 
-  const instructionMap = data?.recipeInstructions.map((instruction) => {
-    return (
-      <ListItem onClick={() => useSelectedInstruction(instruction.id)}>
-        {instruction.position} {instruction.description}
-        {/* ON Click Modify options */}
-        {selectedInstruction === instruction.id ? (
-          <Box>Edit Options</Box>
-        ) : null}
-      </ListItem>
-    );
-  });
+  const instructionMap = data?.recipeInstructions
+    .sort((a, b) => a.position - b.position)
+    .map((instruction) => {
+      return (
+        <ListItem onClick={() => useSelectedInstruction(instruction.id)}>
+          {instruction.description}
+          {/* ON Click Modify options */}
+          {selectedInstruction === instruction.id ? (
+            <Box>Edit Options</Box>
+          ) : null}
+        </ListItem>
+      );
+    });
   return (
     <Box>
       <Text>Instructions</Text>
-      <List>{instructionMap}</List>
+      <OrderedList>{instructionMap}</OrderedList>
     </Box>
   );
 };
