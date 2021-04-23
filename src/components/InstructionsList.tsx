@@ -1,5 +1,4 @@
 import { Box, ListItem, OrderedList, Text } from "@chakra-ui/layout";
-import { List } from "@material-ui/icons";
 import React, { useState } from "react";
 import { useRecipeInstructionsQuery } from "../generated/graphql";
 
