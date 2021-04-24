@@ -13,6 +13,7 @@ export const InstructionsList: React.FC<InstructionsListProps> = ({
   original,
 }) => {
   const [selectedInstruction, useSelectedInstruction] = useState(0);
+  const [editMode, setEditMode] = useState(0);
   const { data, loading, error } = useRecipeInstructionsQuery({
     variables: {
       id,
@@ -29,7 +30,7 @@ export const InstructionsList: React.FC<InstructionsListProps> = ({
             {instruction.description}
             {/* ON Click Modify options */}
             {selectedInstruction === instruction.id ? (
-              <EditPanel />
+              <EditPanel setEditMode={setEditMode} id={instruction.id}/>
             ) : null}
           </Flex>
         </ListItem>

@@ -15,14 +15,17 @@ export const IngredientList: React.FC<IngredientListProps> = ({
   const { data, loading, error } = useRecipeIngredientsQuery({
     variables: { id, original },
   });
-  const [selectedIngredient, useSelectedIngredient] = useState(0);
+  const [selectedIngredient, setSelectedIngredient] = useState(0);
+  const [editMode, setEditMode] = useState(0);
 
   const ingregientMap = data?.recipeIngredients.map((ingredient) => {
     return (
-      <ListItem onClick={() => useSelectedIngredient(ingredient.id)}>
+      <ListItem onClick={() => setSelectedIngredient(ingredient.id)}>
         {ingredient.quantity} {ingredient.name}
         {/* on click modify options */}
-        {selectedIngredient === ingredient.id ? <EditPanel /> : null}
+        {selectedIngredient === ingredient.id ? (
+          <EditPanel id={ingredient.id} setEditMode={setEditMode} />
+        ) : null}
       </ListItem>
     );
   });
