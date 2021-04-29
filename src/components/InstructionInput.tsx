@@ -1,3 +1,4 @@
+import { Button } from "@chakra-ui/react";
 import { Formik } from "formik";
 import React from "react";
 import {
@@ -44,6 +45,7 @@ export const InstructionInput: React.FC<InstructionInputProps> = ({
         label="description"
         placeholder="Add an instruction for this recipe"
       />
+      <Button type='submit'>Save</Button>
     </Formik>
   );
 };
