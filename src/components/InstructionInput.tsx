@@ -13,6 +13,7 @@ interface InstructionInputProps {
   original: boolean;
   edit: boolean;
   instructionId?: number | undefined;
+  description?: string;
 }
 
 export const InstructionInput: React.FC<InstructionInputProps> = ({
@@ -21,13 +22,14 @@ export const InstructionInput: React.FC<InstructionInputProps> = ({
   original,
   edit,
   instructionId,
+  description,
 }) => {
   const [updateInstruction] = useUpdateInstructionMutation();
   const [createInstruction] = useCreateInstructionMutation();
 
   return (
     <Formik
-      initialValues={{ description: "", position: position }}
+      initialValues={{ description: description || "", position: position }}
       onSubmit={async (values) => {
         if (edit && instructionId) {
           const { errors } = await updateInstruction({
