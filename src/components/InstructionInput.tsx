@@ -12,7 +12,7 @@ interface InstructionInputProps {
   position: number;
   original: boolean;
   edit: boolean;
-  instructionId?: number;
+  instructionId?: number | undefined;
 }
 
 export const InstructionInput: React.FC<InstructionInputProps> = ({
@@ -45,7 +45,7 @@ export const InstructionInput: React.FC<InstructionInputProps> = ({
         label="description"
         placeholder="Add an instruction for this recipe"
       />
-      <Button type='submit'>Save</Button>
+      <Button type="submit">Save</Button>
     </Formik>
   );
 };
