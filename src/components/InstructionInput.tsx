@@ -9,7 +9,7 @@ import { InputField } from "./InputField";
 
 interface InstructionInputProps {
   recipeId: number;
-  position: number;
+  position?: number;
   original: boolean;
   edit: boolean;
   instructionId?: number | undefined;
@@ -29,7 +29,10 @@ export const InstructionInput: React.FC<InstructionInputProps> = ({
 
   return (
     <Formik
-      initialValues={{ description: description || "", position: position }}
+      initialValues={{
+        description: description || "",
+        position: position || 1,
+      }}
       onSubmit={async (values) => {
         if (edit && instructionId) {
           const { errors } = await updateInstruction({
@@ -42,6 +45,11 @@ export const InstructionInput: React.FC<InstructionInputProps> = ({
         }
       }}
     >
+      <InputField
+        name="position"
+        label="position"
+        placeholder="Add the position order of instruction"
+      />
       <InputField
         name="description"
         label="description"
