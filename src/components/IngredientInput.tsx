@@ -24,6 +24,7 @@ export const InstructionInput: React.FC<InstructionInputProps> = ({
   edit,
   ingredientId,
   name,
+  measurement,
 }) => {
   const [updateIngredient] = useUpdateIngredientMutation();
   const [createIngredient] = useCreateIngredientMutation();
@@ -33,6 +34,7 @@ export const InstructionInput: React.FC<InstructionInputProps> = ({
       initialValues={{
         name: name || "",
         quantity: quantity || 1,
+        measurement: measurement || "",
       }}
       onSubmit={async (values) => {
         if (edit && ingredientId) {
