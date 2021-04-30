@@ -3,5 +3,6 @@ mutation UpdateIngredient($id:Int!, $input:IngredientInput!){
     id
     name
     quantity
+    measurement
   }
 }
