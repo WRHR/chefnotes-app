@@ -6,7 +6,7 @@ export default function Homepage() {
   return <Layout>
     {/* Search bar */}
     {/* User Recipe list */}
-    {/* New recipe */}
+
     <Link href='/recipe/NewRecipe'>Add a Recipe</Link>
   </Layout>;
 }

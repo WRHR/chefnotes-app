@@ -2,6 +2,7 @@ import { Box, List, ListItem, Text } from "@chakra-ui/layout";
 import React, { useState } from "react";
 import { useRecipeIngredientsQuery } from "../generated/graphql";
 import { EditPanel } from "./EditPanel";
+import { IngredientInput } from "./IngredientInput";
 
 interface IngredientListProps {
   id: number;
@@ -17,6 +18,7 @@ export const IngredientList: React.FC<IngredientListProps> = ({
   });
   const [selectedIngredient, setSelectedIngredient] = useState(0);
   const [editMode, setEditMode] = useState(0);
+  const [addIngredient, setAddIngredient] = useState(false);
 
   const ingregientMap = data?.recipeIngredients.map((ingredient) => {
     return (
@@ -33,6 +35,13 @@ export const IngredientList: React.FC<IngredientListProps> = ({
     <Box>
       <Text>Ingredients</Text>
       <List>{ingregientMap}</List>
+      {addIngredient ? (
+        <IngredientInput recipeId={id} original={original} edit={false} />
+      ) : (
+        <Box as="button" onClick={() => setAddIngredient(true)}>
+          Add Ingredient
+        </Box>
+      )}
     </Box>
   );
 };

@@ -7,7 +7,7 @@ import {
 } from "../generated/graphql";
 import { InputField } from "./InputField";
 
-interface InstructionInputProps {
+interface IngredientInputProps {
   recipeId: number;
   quantity?: number;
   original: boolean;
@@ -17,7 +17,7 @@ interface InstructionInputProps {
   measurement?: string;
 }
 
-export const InstructionInput: React.FC<InstructionInputProps> = ({
+export const IngredientInput: React.FC<IngredientInputProps> = ({
   recipeId,
   quantity,
   original,
