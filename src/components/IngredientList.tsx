@@ -21,7 +21,9 @@ export const IngredientList: React.FC<IngredientListProps> = ({
   const [addIngredient, setAddIngredient] = useState(false);
 
   const ingregientMap = data?.recipeIngredients.map((ingredient) => {
-    return (
+    return editMode ? (
+      <IngredientInput recipeId={ingredient.id} edit={true} original={true} />
+    ) : (
       <ListItem onClick={() => setSelectedIngredient(ingredient.id)}>
         {ingredient.quantity} {ingredient.name}
         {/* on click modify options */}
