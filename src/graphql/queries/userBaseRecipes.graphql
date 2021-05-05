@@ -1,0 +1,7 @@
+query UserBaseRecipes{
+  userBaseRecipes{
+    id
+    name
+    description
+  }
+}

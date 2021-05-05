@@ -52,6 +52,7 @@ export type User = {
   __typename?: 'User';
   id: Scalars['Float'];
   username: Scalars['String'];
+  email: Scalars['String'];
 };
 
 export type BaseRecipe = {
@@ -72,7 +73,8 @@ export type Ingredient = {
   __typename?: 'Ingredient';
   id: Scalars['Float'];
   name: Scalars['String'];
-  quantity: Scalars['String'];
+  quantity: Scalars['Float'];
+  measurement: Scalars['String'];
 };
 
 export type Instruction = {
@@ -176,6 +178,7 @@ export type FieldError = {
 
 export type UsernamePasswordInput = {
   username: Scalars['String'];
+  email: Scalars['String'];
   password: Scalars['String'];
 };
 
@@ -186,7 +189,8 @@ export type RecipeInput = {
 
 export type IngredientInput = {
   name: Scalars['String'];
-  quantity: Scalars['String'];
+  quantity: Scalars['Float'];
+  measurement: Scalars['String'];
 };
 
 export type InstructionInput = {
@@ -239,7 +243,7 @@ export type CreateIngredientMutation = (
   { __typename?: 'Mutation' }
   & { createIngredient: (
     { __typename?: 'Ingredient' }
-    & Pick<Ingredient, 'id' | 'name' | 'quantity'>
+    & Pick<Ingredient, 'id' | 'name' | 'quantity' | 'measurement'>
   ) }
 );
 
@@ -328,7 +332,7 @@ export type UpdateIngredientMutation = (
   { __typename?: 'Mutation' }
   & { updateIngredient?: Maybe<(
     { __typename?: 'Ingredient' }
-    & Pick<Ingredient, 'id' | 'name' | 'quantity'>
+    & Pick<Ingredient, 'id' | 'name' | 'quantity' | 'measurement'>
   )> }
 );
 
@@ -380,7 +384,7 @@ export type RecipeIngredientsQuery = (
   { __typename?: 'Query' }
   & { recipeIngredients: Array<(
     { __typename?: 'Ingredient' }
-    & Pick<Ingredient, 'id' | 'name' | 'quantity'>
+    & Pick<Ingredient, 'id' | 'name' | 'measurement' | 'quantity'>
   )> }
 );
 
@@ -395,6 +399,17 @@ export type RecipeInstructionsQuery = (
   & { recipeInstructions: Array<(
     { __typename?: 'Instruction' }
     & Pick<Instruction, 'id' | 'position' | 'description'>
+  )> }
+);
+
+export type UserBaseRecipesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type UserBaseRecipesQuery = (
+  { __typename?: 'Query' }
+  & { userBaseRecipes: Array<(
+    { __typename?: 'BaseRecipe' }
+    & Pick<BaseRecipe, 'id' | 'name' | 'description'>
   )> }
 );
 
@@ -462,6 +477,7 @@ export const CreateIngredientDocument = gql`
     id
     name
     quantity
+    measurement
   }
 }
     `;
@@ -701,6 +717,7 @@ export const UpdateIngredientDocument = gql`
     id
     name
     quantity
+    measurement
   }
 }
     `;
@@ -843,6 +860,7 @@ export const RecipeIngredientsDocument = gql`
   recipeIngredients(recipeId: $id, original: $original) {
     id
     name
+    measurement
     quantity
   }
 }
@@ -914,3 +932,39 @@ export function useRecipeInstructionsLazyQuery(baseOptions?: Apollo.LazyQueryHoo
 export type RecipeInstructionsQueryHookResult = ReturnType<typeof useRecipeInstructionsQuery>;
 export type RecipeInstructionsLazyQueryHookResult = ReturnType<typeof useRecipeInstructionsLazyQuery>;
 export type RecipeInstructionsQueryResult = Apollo.QueryResult<RecipeInstructionsQuery, RecipeInstructionsQueryVariables>;
+export const UserBaseRecipesDocument = gql`
+    query UserBaseRecipes {
+  userBaseRecipes {
+    id
+    name
+    description
+  }
+}
+    `;
+
+/**
+ * __useUserBaseRecipesQuery__
+ *
+ * To run a query within a React component, call `useUserBaseRecipesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useUserBaseRecipesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useUserBaseRecipesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useUserBaseRecipesQuery(baseOptions?: Apollo.QueryHookOptions<UserBaseRecipesQuery, UserBaseRecipesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<UserBaseRecipesQuery, UserBaseRecipesQueryVariables>(UserBaseRecipesDocument, options);
+      }
+export function useUserBaseRecipesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<UserBaseRecipesQuery, UserBaseRecipesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<UserBaseRecipesQuery, UserBaseRecipesQueryVariables>(UserBaseRecipesDocument, options);
+        }
+export type UserBaseRecipesQueryHookResult = ReturnType<typeof useUserBaseRecipesQuery>;
+export type UserBaseRecipesLazyQueryHookResult = ReturnType<typeof useUserBaseRecipesLazyQuery>;
+export type UserBaseRecipesQueryResult = Apollo.QueryResult<UserBaseRecipesQuery, UserBaseRecipesQueryVariables>;
