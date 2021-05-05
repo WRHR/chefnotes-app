@@ -4,19 +4,21 @@ import { Layout } from "../components/Layout";
 import { useUserBaseRecipesQuery } from "../generated/graphql";
 
 export default function Homepage() {
-  const {data, loading, error} = useUserBaseRecipesQuery()
-  const userRecipesMap = data?.userBaseRecipes.map(recipe=>{
-    return(
-      <ListItem><Link href={`/recipe/${recipe.id}`}>{recipe.name}</Link></ListItem>
-    )
-  })
+  const { data, loading, error } = useUserBaseRecipesQuery();
+  const userRecipesMap = data?.userBaseRecipes.map((recipe) => {
+    return (
+      <ListItem>
+        <Link href={`/recipe/${recipe.id}`}>{recipe.name}</Link>
+      </ListItem>
+    );
+  });
 
-  return <Layout>
-    {/* Search bar */}
-    <List>
-      {userRecipesMap}
-    </List>
+  return (
+    <Layout>
+      {/* Search bar */}
+      <List>{userRecipesMap}</List>
 
-    <Link href='/recipe/NewRecipe'>Add a Recipe</Link>
-  </Layout>;
+      <Link href="/recipe/NewRecipe">Add a Recipe</Link>
+    </Layout>
+  );
 }
