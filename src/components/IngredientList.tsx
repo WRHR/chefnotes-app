@@ -26,7 +26,6 @@ export const IngredientList: React.FC<IngredientListProps> = ({
     ) : (
       <ListItem onClick={() => setSelectedIngredient(ingredient.id)}>
         {ingredient.quantity} {ingredient.name}
-        {/* on click modify options */}
         {selectedIngredient === ingredient.id ? (
           <EditPanel id={ingredient.id} setEditMode={setEditMode} />
         ) : null}
