@@ -1,9 +1,14 @@
+import { Box } from '@chakra-ui/react';
 import React from 'react'
 
 interface SearchBarProps {
-recipes:UserBaseRecipesQuery
+ recipes:
 }
 
-export const SearchBar: React.FC<SearchBarProps> = ({}) => {
-    return ();
+export const SearchBar: React.FC<SearchBarProps> = ({recipes}) => {
+    return (
+      <Box>
+        
+      </Box>
+    );
 }
