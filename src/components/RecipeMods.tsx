@@ -14,7 +14,7 @@ interface RecipeModsProps {
   recipeId: number;
 }
 
-export const RecipeMods: React.FC<RecipeModsProps> = ({}) => {
+export const RecipeMods: React.FC<RecipeModsProps> = ({recipeId}) => {
   // Recipe mod query
 
   const modList = (query) => {
