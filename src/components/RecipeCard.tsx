@@ -1,5 +1,15 @@
 import React from "react";
-import { Box, Button, Flex, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Text,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionIcon,
+  AccordionPanel,
+} from "@chakra-ui/react";
 import { BaseRecipe } from "../generated/graphql";
 
 interface RecipeCardProps {
@@ -11,13 +21,23 @@ interface RecipeCardProps {
 
 export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }) => {
   return (
-    <Flex flexDir="column">
-      <Text>{recipe.name}</Text>
-      <Text>{recipe.description}</Text>
-
-      <Button as="link" href={`/recipe/${recipe.id}`}>
-        View Recipe
-      </Button>
-    </Flex>
+    <Accordion>
+      <AccordionItem>
+        <h2>
+          <AccordionButton>
+            <Box flex="1" textAlign="left">
+              {recipe.name}
+            </Box>
+            <AccordionIcon />
+          </AccordionButton>
+        </h2>
+        <AccordionPanel>
+          <Text>{recipe.description}</Text>
+          <Button as="link" href={`/recipe/${recipe.id}`}>
+            View Recipe
+          </Button>
+        </AccordionPanel>
+      </AccordionItem>
+    </Accordion>
   );
 };
