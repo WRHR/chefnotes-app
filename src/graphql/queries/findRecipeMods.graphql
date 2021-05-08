@@ -1,0 +1,7 @@
+query FindRecipeMods($baseRecipeId: Int!) {
+  findBaseRecipeMods(baseRecipeId: $baseRecipeId) {
+    id
+    name
+    description
+  }
+}
