@@ -3,6 +3,7 @@ import React from "react";
 import { IngredientList } from "../../components/IngredientList";
 import { InstructionsList } from "../../components/InstructionsList";
 import { Layout } from "../../components/Layout";
+import { RecipeMods } from "../../components/RecipeMods";
 import { useGetRecipeFromUrl } from "../../utils/useGetRecipeFromUrl";
 
 export const RecipeMod = ({}) => {
@@ -24,9 +25,7 @@ export const RecipeMod = ({}) => {
     // base recipe data
     <Layout>
       <Text>{data.baseRecipe.name}</Text>
-      {/* On Click Modifications Accordian?
-          Add Modification
-      */}
+      <RecipeMods recipeId={data.baseRecipe.id} />
       <InstructionsList id={data.baseRecipe.id} original={true} />
       {/* Add Instruction */}
       <IngredientList id={data.baseRecipe.id} original={true} />
