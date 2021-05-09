@@ -22,7 +22,6 @@ export const RecipeMod = ({}) => {
   }
 
   return (
-    // base recipe data
     <Layout>
       <Text>{data.baseRecipe.name}</Text>
       <RecipeMods recipeId={data.baseRecipe.id} />
