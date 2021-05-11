@@ -16,7 +16,7 @@ interface RecipeModsProps {
 
 export const RecipeMods: React.FC<RecipeModsProps> = ({recipeId}) => {
   // Recipe mod query
-
+  
   const modList = (query) => {
     return query.map((mod) => {
       return <ListItem>{mod}</ListItem>;
