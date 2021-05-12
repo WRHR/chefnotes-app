@@ -9,19 +9,17 @@ import {
   List,
   ListItem,
 } from "@chakra-ui/react";
+import { useFindRecipeModsQuery } from "../generated/graphql";
 
 interface RecipeModsProps {
   recipeId: number;
 }
 
-export const RecipeMods: React.FC<RecipeModsProps> = ({recipeId}) => {
-  // Recipe mod query
-  
-  const modList = (query) => {
-    return query.map((mod) => {
-      return <ListItem>{mod}</ListItem>;
-    });
-  };
+export const RecipeMods: React.FC<RecipeModsProps> = ({ recipeId }) => {
+
+  const {data, loading, error} = useFindRecipeModsQuery({ variables: { baseRecipeId: recipeId } });
+
+  const modList = data?.findRecipeMods.map()
 
   return (
     <Accordion>
