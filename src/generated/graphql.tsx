@@ -23,6 +23,9 @@ export type Query = {
   baseRecipe?: Maybe<BaseRecipe>;
   recipeIngredients: Array<Ingredient>;
   recipeInstructions: Array<Instruction>;
+  modifiedRecipesAll: Array<ModifiedRecipe>;
+  modifiedRecipe?: Maybe<ModifiedRecipe>;
+  findRecipeMods?: Maybe<ModifiedRecipe>;
 };
 
 
@@ -46,6 +49,16 @@ export type QueryRecipeIngredientsArgs = {
 export type QueryRecipeInstructionsArgs = {
   original: Scalars['Boolean'];
   recipeId: Scalars['Int'];
+};
+
+
+export type QueryModifiedRecipeArgs = {
+  id: Scalars['Int'];
+};
+
+
+export type QueryFindRecipeModsArgs = {
+  baseRecipeId: Scalars['Int'];
 };
 
 export type User = {
@@ -84,6 +97,15 @@ export type Instruction = {
   position: Scalars['Float'];
 };
 
+export type ModifiedRecipe = {
+  __typename?: 'ModifiedRecipe';
+  id: Scalars['Float'];
+  name: Scalars['String'];
+  description: Scalars['String'];
+  baseRecipeId: Scalars['Float'];
+  creatorId: Scalars['Float'];
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   register: UserResponse;
@@ -98,6 +120,9 @@ export type Mutation = {
   createInstruction: Instruction;
   updateInstruction?: Maybe<Instruction>;
   deleteInstruction: Scalars['Boolean'];
+  createModifiedRecipe: ModifiedRecipe;
+  updateModifiedRecipe: ModifiedRecipe;
+  deleteModifiedRecipe: Scalars['Boolean'];
 };
 
 
@@ -164,6 +189,24 @@ export type MutationDeleteInstructionArgs = {
   id: Scalars['Int'];
 };
 
+
+export type MutationCreateModifiedRecipeArgs = {
+  baseRecipeId: Scalars['Int'];
+  input: ModifiedRecipeInput;
+};
+
+
+export type MutationUpdateModifiedRecipeArgs = {
+  description: Scalars['String'];
+  name: Scalars['String'];
+  id: Scalars['Int'];
+};
+
+
+export type MutationDeleteModifiedRecipeArgs = {
+  id: Scalars['Int'];
+};
+
 export type UserResponse = {
   __typename?: 'UserResponse';
   errors?: Maybe<Array<FieldError>>;
@@ -196,6 +239,12 @@ export type IngredientInput = {
 export type InstructionInput = {
   description: Scalars['String'];
   position: Scalars['Float'];
+};
+
+export type ModifiedRecipeInput = {
+  name: Scalars['String'];
+  description: Scalars['String'];
+  baseRecipeId: Scalars['Float'];
 };
 
 export type RegularErrorFragment = (
@@ -360,6 +409,19 @@ export type BaseRecipeQuery = (
   & { baseRecipe?: Maybe<(
     { __typename?: 'BaseRecipe' }
     & Pick<BaseRecipe, 'id' | 'name' | 'description'>
+  )> }
+);
+
+export type FindRecipeModsQueryVariables = Exact<{
+  baseRecipeId: Scalars['Int'];
+}>;
+
+
+export type FindRecipeModsQuery = (
+  { __typename?: 'Query' }
+  & { findRecipeMods?: Maybe<(
+    { __typename?: 'ModifiedRecipe' }
+    & Pick<ModifiedRecipe, 'id' | 'name' | 'description'>
   )> }
 );
 
@@ -821,6 +883,43 @@ export function useBaseRecipeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
 export type BaseRecipeQueryHookResult = ReturnType<typeof useBaseRecipeQuery>;
 export type BaseRecipeLazyQueryHookResult = ReturnType<typeof useBaseRecipeLazyQuery>;
 export type BaseRecipeQueryResult = Apollo.QueryResult<BaseRecipeQuery, BaseRecipeQueryVariables>;
+export const FindRecipeModsDocument = gql`
+    query FindRecipeMods($baseRecipeId: Int!) {
+  findRecipeMods(baseRecipeId: $baseRecipeId) {
+    id
+    name
+    description
+  }
+}
+    `;
+
+/**
+ * __useFindRecipeModsQuery__
+ *
+ * To run a query within a React component, call `useFindRecipeModsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFindRecipeModsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFindRecipeModsQuery({
+ *   variables: {
+ *      baseRecipeId: // value for 'baseRecipeId'
+ *   },
+ * });
+ */
+export function useFindRecipeModsQuery(baseOptions: Apollo.QueryHookOptions<FindRecipeModsQuery, FindRecipeModsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<FindRecipeModsQuery, FindRecipeModsQueryVariables>(FindRecipeModsDocument, options);
+      }
+export function useFindRecipeModsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FindRecipeModsQuery, FindRecipeModsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<FindRecipeModsQuery, FindRecipeModsQueryVariables>(FindRecipeModsDocument, options);
+        }
+export type FindRecipeModsQueryHookResult = ReturnType<typeof useFindRecipeModsQuery>;
+export type FindRecipeModsLazyQueryHookResult = ReturnType<typeof useFindRecipeModsLazyQuery>;
+export type FindRecipeModsQueryResult = Apollo.QueryResult<FindRecipeModsQuery, FindRecipeModsQueryVariables>;
 export const MeDocument = gql`
     query Me {
   me {
