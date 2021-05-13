@@ -16,10 +16,13 @@ interface RecipeModsProps {
 }
 
 export const RecipeMods: React.FC<RecipeModsProps> = ({ recipeId }) => {
+  const { data, loading, error } = useFindRecipeModsQuery({
+    variables: { baseRecipeId: recipeId },
+  });
 
-  const {data, loading, error} = useFindRecipeModsQuery({ variables: { baseRecipeId: recipeId } });
-
-  const modList = data?.findRecipeMods.map()
+  const modList = data?.findRecipeMods.map((mod) => {
+    return <ListItem>{mod.name}</ListItem>;
+  });
 
   return (
     <Accordion>
