@@ -25,7 +25,7 @@ export type Query = {
   recipeInstructions: Array<Instruction>;
   modifiedRecipesAll: Array<ModifiedRecipe>;
   modifiedRecipe?: Maybe<ModifiedRecipe>;
-  findRecipeMods: ModifiedRecipe;
+  findRecipeMods: Array<ModifiedRecipe>;
 };
 
 
@@ -419,10 +419,10 @@ export type FindRecipeModsQueryVariables = Exact<{
 
 export type FindRecipeModsQuery = (
   { __typename?: 'Query' }
-  & { findRecipeMods: (
+  & { findRecipeMods: Array<(
     { __typename?: 'ModifiedRecipe' }
     & Pick<ModifiedRecipe, 'id' | 'name' | 'description'>
-  ) }
+  )> }
 );
 
 export type MeQueryVariables = Exact<{ [key: string]: never; }>;
