@@ -37,7 +37,8 @@ export const RecipeMods: React.FC<RecipeModsProps> = ({ recipeId }) => {
           </AccordionButton>
         </h2>
         <AccordionPanel>
-          <List>{modList}</List>
+          <List>{data? modList : 'no modifications made yet'}</List>
+          <Button>Create New Modification</Button>
         </AccordionPanel>
       </AccordionItem>
     </Accordion>
