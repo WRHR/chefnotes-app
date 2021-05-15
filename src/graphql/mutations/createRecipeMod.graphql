@@ -1,0 +1,7 @@
+mutation CreateRecipeMod($input: ModifiedRecipeInput, $baseRecipeId: number) {
+  createModifiedRecipe(input: $input, baseRecipeId: $baseRecipeId) {
+    id
+    name
+    description
+  }
+}
