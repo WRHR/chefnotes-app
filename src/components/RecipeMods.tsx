@@ -8,6 +8,7 @@ import {
   Box,
   List,
   ListItem,
+  Button,
 } from "@chakra-ui/react";
 import { useFindRecipeModsQuery } from "../generated/graphql";
 
@@ -21,7 +22,7 @@ export const RecipeMods: React.FC<RecipeModsProps> = ({ recipeId }) => {
   });
 
   const modList = data?.findRecipeMods.map((mod) => {
-    return <ListItem>{mod.name}</ListItem>;
+    return <ListItem>{mod.name}<Button as='link' >View Modification</Button></ListItem>;
   });
 
   return (
