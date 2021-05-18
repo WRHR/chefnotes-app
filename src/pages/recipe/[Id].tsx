@@ -25,11 +25,9 @@ export const Recipe = ({}) => {
     // base recipe data
     <Layout>
       <Text>{data.baseRecipe.name}</Text>
-      <RecipeMods recipeId={data.baseRecipe.id}/>
-      <InstructionsList id={data.baseRecipe.id} original={true} />
-      {/* Add Instruction */}
+      <RecipeMods recipeId={data.baseRecipe.id} />
       <IngredientList id={data.baseRecipe.id} original={true} />
-      {/* Add Ingredient */}
+      <InstructionsList id={data.baseRecipe.id} original={true} />
     </Layout>
   );
 };
