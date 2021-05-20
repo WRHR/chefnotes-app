@@ -22,7 +22,7 @@ export const InstructionsList: React.FC<InstructionsListProps> = ({
     },
   });
 
-  const [addIngredient, setAddIngredient] = useState(false);
+  const [addInstruction, setAddInstruction] = useState(false);
 
   const instructionMap = data?.recipeInstructions
     .sort((a, b) => a.position - b.position)
@@ -44,6 +44,7 @@ export const InstructionsList: React.FC<InstructionsListProps> = ({
           original={true}
           recipeId={id}
           position={instruction.position}
+          setAddInstruction={setAddInstruction}
         />
       );
     });
@@ -52,15 +53,16 @@ export const InstructionsList: React.FC<InstructionsListProps> = ({
     <Box>
       <Text>Instructions</Text>
       <OrderedList>{instructionMap}</OrderedList>
-      {addIngredient ? (
+      {addInstruction ? (
         <InstructionInput
           recipeId={id}
           original={original}
           edit={false}
           position={newPosition}
+          setAddInstruction={setAddInstruction}
         />
       ) : (
-        <Box as="button" onClick={() => setAddIngredient(true)}>
+        <Box as="button" onClick={() => setAddInstruction(true)}>
           Add Instruction
         </Box>
       )}

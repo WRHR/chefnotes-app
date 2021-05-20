@@ -14,6 +14,7 @@ interface InstructionInputProps {
   edit: boolean;
   instructionId?: number | undefined;
   description?: string;
+  setAddInstruction: Function;
 }
 
 export const InstructionInput: React.FC<InstructionInputProps> = ({
@@ -23,6 +24,7 @@ export const InstructionInput: React.FC<InstructionInputProps> = ({
   edit,
   instructionId,
   description,
+  setAddInstruction,
 }) => {
   const [updateInstruction] = useUpdateInstructionMutation();
   const [createInstruction] = useCreateInstructionMutation();
@@ -43,6 +45,7 @@ export const InstructionInput: React.FC<InstructionInputProps> = ({
             variables: { input: values, original, recipeId },
           });
         }
+        setAddInstruction(false);
       }}
     >
       <Flex>
