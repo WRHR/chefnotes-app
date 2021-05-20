@@ -44,7 +44,7 @@ export const InstructionsList: React.FC<InstructionsListProps> = ({
           original={true}
           recipeId={id}
           position={instruction.position}
-          setAddInstruction={setAddInstruction}
+          setEditMode={setEditMode}
         />
       );
     });

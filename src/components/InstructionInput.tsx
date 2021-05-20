@@ -14,7 +14,8 @@ interface InstructionInputProps {
   edit: boolean;
   instructionId?: number | undefined;
   description?: string;
-  setAddInstruction: Function;
+  setAddInstruction?: Function;
+  setEditMode?: Function;
 }
 
 export const InstructionInput: React.FC<InstructionInputProps> = ({
@@ -25,6 +26,7 @@ export const InstructionInput: React.FC<InstructionInputProps> = ({
   instructionId,
   description,
   setAddInstruction,
+  setEditMode,
 }) => {
   const [updateInstruction] = useUpdateInstructionMutation();
   const [createInstruction] = useCreateInstructionMutation();
@@ -36,16 +38,18 @@ export const InstructionInput: React.FC<InstructionInputProps> = ({
         position: position || 1,
       }}
       onSubmit={async (values) => {
-        if (edit && instructionId) {
+        if (edit && instructionId && setEditMode) {
           const { errors } = await updateInstruction({
             variables: { id: instructionId, input: values },
           });
-        } else {
+          setEditMode(0);
+        }
+        if (setAddInstruction && !edit) {
           const { errors } = await createInstruction({
             variables: { input: values, original, recipeId },
           });
+          setAddInstruction(false);
         }
-        setAddInstruction(false);
       }}
     >
       <Flex>
