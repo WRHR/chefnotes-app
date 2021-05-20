@@ -1,4 +1,4 @@
-import { Button } from "@chakra-ui/react";
+import { Button, Flex } from "@chakra-ui/react";
 import { Formik } from "formik";
 import React from "react";
 import {
@@ -45,17 +45,19 @@ export const InstructionInput: React.FC<InstructionInputProps> = ({
         }
       }}
     >
-      <InputField
-        name="position"
-        label="position"
-        placeholder="Add the position order of instruction"
-      />
-      <InputField
-        name="description"
-        label="description"
-        placeholder="Add an instruction for this recipe"
-      />
-      <Button type="submit">Save</Button>
+      <Flex>
+        <InputField
+          name="position"
+          label="position"
+          placeholder="Add the position order of instruction"
+        />
+        <InputField
+          name="description"
+          label="description"
+          placeholder="Add an instruction for this recipe"
+        />
+        <Button type="submit">Save</Button>
+      </Flex>
     </Formik>
   );
 };
