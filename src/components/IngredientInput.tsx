@@ -1,4 +1,4 @@
-import { Button } from "@chakra-ui/react";
+import { Button, Flex } from "@chakra-ui/react";
 import { Formik } from "formik";
 import React from "react";
 import {
@@ -48,22 +48,24 @@ export const IngredientInput: React.FC<IngredientInputProps> = ({
         }
       }}
     >
-      <InputField
-        name="quantity"
-        label="quantity"
-        placeholder="Add amount of ingredient"
-      />
-      <InputField
-        name="measurement"
-        label="measurement"
-        placeholder="Add the measurement or the ingredient"
-      />
-      <InputField
-        name="name"
-        label="name"
-        placeholder="Add the name of the ingredient"
-      />
-      <Button type="submit">Save</Button>
+      <Flex>
+        <InputField
+          name="quantity"
+          label="quantity"
+          placeholder="Add amount of ingredient"
+        />
+        <InputField
+          name="measurement"
+          label="measurement"
+          placeholder="Add the measurement or the ingredient"
+        />
+        <InputField
+          name="name"
+          label="name"
+          placeholder="Add the name of the ingredient"
+        />
+        <Button type="submit">Save</Button>
+      </Flex>
     </Formik>
   );
 };
