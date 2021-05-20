@@ -15,6 +15,8 @@ interface IngredientInputProps {
   ingredientId?: number | undefined;
   name?: string;
   measurement?: string;
+  setEditMode?: Function;
+  setAddIngredient?: Function;
 }
 
 export const IngredientInput: React.FC<IngredientInputProps> = ({
@@ -25,6 +27,8 @@ export const IngredientInput: React.FC<IngredientInputProps> = ({
   ingredientId,
   name,
   measurement,
+  setEditMode,
+  setAddIngredient,
 }) => {
   const [updateIngredient] = useUpdateIngredientMutation();
   const [createIngredient] = useCreateIngredientMutation();
@@ -37,14 +41,17 @@ export const IngredientInput: React.FC<IngredientInputProps> = ({
         measurement: measurement || "",
       }}
       onSubmit={async (values) => {
-        if (edit && ingredientId) {
+        if (edit && ingredientId && setEditMode) {
           const { errors } = await updateIngredient({
             variables: { id: ingredientId, input: values },
           });
-        } else {
+          setEditMode(0);
+        }
+        if (setAddIngredient) {
           const { errors } = await createIngredient({
             variables: { input: values, original, recipeId },
           });
+          setAddIngredient(false);
         }
       }}
     >

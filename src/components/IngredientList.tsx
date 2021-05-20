@@ -22,7 +22,7 @@ export const IngredientList: React.FC<IngredientListProps> = ({
 
   const ingregientMap = data?.recipeIngredients.map((ingredient) => {
     return editMode ? (
-      <IngredientInput recipeId={ingredient.id} edit={true} original={true} />
+      <IngredientInput recipeId={ingredient.id} edit={true} original={true} setEditMode={setEditMode}/>
     ) : (
       <ListItem onClick={() => setSelectedIngredient(ingredient.id)}>
         {ingredient.quantity} {ingredient.name}
@@ -37,7 +37,7 @@ export const IngredientList: React.FC<IngredientListProps> = ({
       <Text>Ingredients</Text>
       <List>{ingregientMap}</List>
       {addIngredient ? (
-        <IngredientInput recipeId={id} original={original} edit={false} />
+        <IngredientInput recipeId={id} original={original} edit={false} setAddIngredient={setAddIngredient} />
       ) : (
         <Box as="button" onClick={() => setAddIngredient(true)}>
           Add Ingredient
