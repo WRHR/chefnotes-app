@@ -1,6 +1,9 @@
 import { Box, Flex, ListItem, OrderedList, Text } from "@chakra-ui/layout";
-import React, { useState } from "react";
-import { useRecipeInstructionsQuery } from "../generated/graphql";
+import React, { useEffect, useState } from "react";
+import {
+  useRecipeIngredientsQuery,
+  useRecipeInstructionsQuery,
+} from "../generated/graphql";
 import { EditPanel } from "./EditPanel";
 import { InstructionInput } from "./InstructionInput";
 
@@ -21,6 +24,9 @@ export const InstructionsList: React.FC<InstructionsListProps> = ({
       original,
     },
   });
+  useEffect(() => {
+    useRecipeIngredientsQuery({ variables: { id, original } });
+  }, [data]);
 
   const [addInstruction, setAddInstruction] = useState(false);
 
