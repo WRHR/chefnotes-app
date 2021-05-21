@@ -5,6 +5,7 @@ import { MeDocument, MeQuery, useLoginMutation } from "../generated/graphql";
 import { InputField } from "../components/InputField";
 import { useRouter } from "next/router";
 import { toErrorMap } from "../utils/toErrorMap";
+import { Heading } from "../components/Heading";
 
 interface Values {
   usernameOrEmail: string;
@@ -15,7 +16,8 @@ const login: React.FC = ({}) => {
   const router = useRouter();
   const [login] = useLoginMutation();
   return (
-    <Box >
+    <Box>
+      <Heading />
       <Formik
         initialValues={{
           usernameOrEmail: "",

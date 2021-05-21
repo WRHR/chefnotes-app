@@ -5,6 +5,7 @@ import { Box, Flex, Button, Text } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import { toErrorMap } from "../utils/toErrorMap";
 import { InputField } from "../components/InputField";
+import { Heading } from "../components/Heading";
 
 const register: React.FC = ({}) => {
   const router = useRouter();
@@ -12,6 +13,7 @@ const register: React.FC = ({}) => {
 
   return (
     <Box >
+      <Heading />
       <Formik
         initialValues={{ email: "", username: "", password: "" }}
         onSubmit={async (values, { setErrors }) => {
