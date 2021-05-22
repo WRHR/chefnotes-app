@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Flex, Text, Button } from "@chakra-ui/react";
+import { Box, Flex, Text, Button, Center } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import { MeDocument, MeQuery, useLoginMutation } from "../generated/graphql";
 import { InputField } from "../components/InputField";
@@ -16,7 +16,7 @@ const login: React.FC = ({}) => {
   const router = useRouter();
   const [login] = useLoginMutation();
   return (
-    <Box>
+    <Center>
       <Heading />
       <Formik
         initialValues={{
@@ -49,7 +49,7 @@ const login: React.FC = ({}) => {
       >
         {({ isSubmitting }) => (
           <Form>
-            <Flex flexDir='column' >
+            <Flex flexDir="column">
               <InputField
                 label="Username or Email"
                 name="usernameOrEmail"
@@ -61,10 +61,7 @@ const login: React.FC = ({}) => {
                 type="password"
                 placeholder="Password"
               />
-              <Button
-                type='submit'
-                isLoading={isSubmitting}
-              >
+              <Button type="submit" isLoading={isSubmitting}>
                 login
               </Button>
               <Text>
@@ -74,7 +71,7 @@ const login: React.FC = ({}) => {
           </Form>
         )}
       </Formik>
-    </Box>
+    </Center>
   );
 };
 

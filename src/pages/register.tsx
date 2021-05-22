@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 import { MeDocument, MeQuery, useRegisterMutation } from "../generated/graphql";
-import { Box, Flex, Button, Text } from "@chakra-ui/react";
+import { Box, Flex, Button, Text, Center } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import { toErrorMap } from "../utils/toErrorMap";
 import { InputField } from "../components/InputField";
@@ -12,7 +12,7 @@ const register: React.FC = ({}) => {
   const [register] = useRegisterMutation();
 
   return (
-    <Box >
+    <Center>
       <Heading />
       <Formik
         initialValues={{ email: "", username: "", password: "" }}
@@ -37,7 +37,7 @@ const register: React.FC = ({}) => {
         }}
       >
         {({ isSubmitting }) => (
-          <Flex flexDir='column'>
+          <Flex flexDir="column">
             <Form>
               <InputField
                 name="username"
@@ -55,10 +55,7 @@ const register: React.FC = ({}) => {
                   type="password"
                 />
               </Box>
-              <Button
-                type='submit'
-                isLoading={isSubmitting}
-              >
+              <Button type="submit" isLoading={isSubmitting}>
                 register
               </Button>
             </Form>
@@ -68,7 +65,7 @@ const register: React.FC = ({}) => {
           </Flex>
         )}
       </Formik>
-    </Box>
+    </Center>
   );
 };
 export default register;
