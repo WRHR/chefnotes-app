@@ -24,6 +24,18 @@ export const InstructionsList: React.FC<InstructionsListProps> = ({
       original,
     },
   });
+
+  if (loading) {
+    return <div>loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error.message}</div>;
+  }
+
+  if (!data?.recipeInstructions) {
+    return <div>Could not find recipe instructions</div>;
+  }
   useEffect(() => {
     useRecipeIngredientsQuery({ variables: { id, original } });
   }, [data]);
