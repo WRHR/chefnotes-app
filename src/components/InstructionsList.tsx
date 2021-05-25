@@ -38,7 +38,7 @@ export const InstructionsList: React.FC<InstructionsListProps> = ({
   }
   useEffect(() => {
     useRecipeIngredientsQuery({ variables: { id, original } });
-  }, [data]);
+  }, [data.recipeInstructions]);
 
   const [addInstruction, setAddInstruction] = useState(false);
 

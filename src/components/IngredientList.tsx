@@ -33,7 +33,8 @@ export const IngredientList: React.FC<IngredientListProps> = ({
   }
   useEffect(() => {
     useRecipeInstructionsQuery({ variables: { id, original } });
-  }, [data]);
+  }, [data.recipeIngredients]);
+  
   const [selectedIngredient, setSelectedIngredient] = useState(0);
   const [editMode, setEditMode] = useState(0);
   const [addIngredient, setAddIngredient] = useState(false);
