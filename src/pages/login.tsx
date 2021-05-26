@@ -17,60 +17,62 @@ const login: React.FC = ({}) => {
   const [login] = useLoginMutation();
   return (
     <Center>
-      <Heading />
-      <Formik
-        initialValues={{
-          usernameOrEmail: "",
-          password: "",
-        }}
-        onSubmit={async (values, { setErrors }) => {
-          const response = await login({
-            variables: values,
-            update: (cache, { data }) => {
-              cache.writeQuery<MeQuery>({
-                query: MeDocument,
-                data: {
-                  __typename: "Query",
-                  me: data?.login.user,
-                },
-              });
-            },
-          });
-          if (response.data?.login.errors) {
-            setErrors(toErrorMap(response.data.login.errors));
-          } else if (response.data?.login.user) {
-            if (typeof router.query.next === "string") {
-              router.push(router.query.next);
-            } else {
-              router.push("/");
+      <Box maxW="500px">
+        <Heading />
+        <Formik
+          initialValues={{
+            usernameOrEmail: "",
+            password: "",
+          }}
+          onSubmit={async (values, { setErrors }) => {
+            const response = await login({
+              variables: values,
+              update: (cache, { data }) => {
+                cache.writeQuery<MeQuery>({
+                  query: MeDocument,
+                  data: {
+                    __typename: "Query",
+                    me: data?.login.user,
+                  },
+                });
+              },
+            });
+            if (response.data?.login.errors) {
+              setErrors(toErrorMap(response.data.login.errors));
+            } else if (response.data?.login.user) {
+              if (typeof router.query.next === "string") {
+                router.push(router.query.next);
+              } else {
+                router.push("/");
+              }
             }
-          }
-        }}
-      >
-        {({ isSubmitting }) => (
-          <Form>
-            <Flex flexDir="column">
-              <InputField
-                label="Username or Email"
-                name="usernameOrEmail"
-                placeholder="Username or Email"
-              />
-              <InputField
-                name="password"
-                label="Password"
-                type="password"
-                placeholder="Password"
-              />
-              <Button type="submit" isLoading={isSubmitting}>
-                login
-              </Button>
-              <Text>
-                Need an account? <a href="/register">Click Here</a>
-              </Text>
-            </Flex>
-          </Form>
-        )}
-      </Formik>
+          }}
+        >
+          {({ isSubmitting }) => (
+            <Form>
+              <Flex flexDir="column">
+                <InputField
+                  label="Username or Email"
+                  name="usernameOrEmail"
+                  placeholder="Username or Email"
+                />
+                <InputField
+                  name="password"
+                  label="Password"
+                  type="password"
+                  placeholder="Password"
+                />
+                <Button type="submit" isLoading={isSubmitting}>
+                  login
+                </Button>
+                <Text>
+                  Need an account? <a href="/register">Click Here</a>
+                </Text>
+              </Flex>
+            </Form>
+          )}
+        </Formik>
+      </Box>
     </Center>
   );
 };
