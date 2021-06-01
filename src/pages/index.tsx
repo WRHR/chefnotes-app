@@ -11,7 +11,6 @@ export default function Homepage() {
     return (
       <ListItem>
         <RecipeCard recipe={recipe} />
-        <Link href={`/recipe/${recipe.id}`}>{recipe.name}</Link>
       </ListItem>
     );
   });
