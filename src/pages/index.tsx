@@ -17,10 +17,12 @@ export default function Homepage() {
 
   return (
     <Layout>
-      <SearchBar recipes={data?.userBaseRecipes}/>
+      <SearchBar recipes={data?.userBaseRecipes} />
       <List>{userRecipesMap}</List>
 
-      <Link href="/recipe/NewRecipe">Add a Recipe</Link>
+      <Button as="link" href="/recipe/NewRecipe">
+        Add a Recipe
+      </Button>
     </Layout>
   );
 }
