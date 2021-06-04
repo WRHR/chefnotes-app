@@ -19,7 +19,6 @@ export default function Homepage() {
     <Layout>
       <SearchBar recipes={data?.userBaseRecipes} />
       <List>{userRecipesMap}</List>
-
       <Button as="link" href="/recipe/NewRecipe">
         Add a Recipe
       </Button>
