@@ -15,6 +15,13 @@ export default function Homepage() {
     );
   });
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  if (error) {
+    return <div>There was an error loading your recipes</div>;
+  }
+
   return (
     <Layout>
       <SearchBar recipes={data?.userBaseRecipes} />
