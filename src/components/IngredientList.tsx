@@ -34,7 +34,7 @@ export const IngredientList: React.FC<IngredientListProps> = ({
   useEffect(() => {
     useRecipeInstructionsQuery({ variables: { id, original } });
   }, [data.recipeIngredients]);
-  
+
   const [selectedIngredient, setSelectedIngredient] = useState(0);
   const [editMode, setEditMode] = useState(0);
   const [addIngredient, setAddIngredient] = useState(false);
@@ -59,7 +59,7 @@ export const IngredientList: React.FC<IngredientListProps> = ({
   return (
     <Box>
       <Text>Ingredients</Text>
-      <List>{ingregientMap}</List>
+      <List maxWidth="500px">{ingregientMap}</List>
       {addIngredient ? (
         <IngredientInput
           recipeId={id}
