@@ -19,7 +19,7 @@ export const NavBar: React.FC<NavBarProps> = ({}) => {
   });
 
   return (
-    <Flex justifyContent='space-between'>
+    <Flex p="10px" justifyContent="space-between">
       <Center>
         <Text>
           <a href="/">Chefnotes</a>
