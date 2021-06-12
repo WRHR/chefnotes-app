@@ -1,4 +1,4 @@
-export const color = {
+export const colors = {
   primary: "hsl(200, 44, 39)",
   secondary: "hsl(349, 53, 50)",
   darkPrimary: "hsl(207, 50, 29)",
