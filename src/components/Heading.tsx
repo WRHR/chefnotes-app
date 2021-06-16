@@ -1,12 +1,12 @@
-import { Box, Text } from "@chakra-ui/layout";
+import { Box, Center, Text } from "@chakra-ui/layout";
 import React from "react";
 
 interface HeadingProps {}
 
 export const Heading: React.FC<HeadingProps> = ({}) => {
   return (
-    <Box>
+    <Center>
       <Text fontSize="large" align='center'>ChefNotes</Text>
-    </Box>
+    </Center>
   );
 };
