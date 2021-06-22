@@ -13,6 +13,7 @@ import {
   AlertDialogOverlay,
 } from "@chakra-ui/modal";
 import { useDeleteBaseRecipeMutation } from "../generated/graphql";
+import { useRouter } from "next/router";
 
 interface EditPanelProps {
   setEditMode: Function;
@@ -22,6 +23,7 @@ interface EditPanelProps {
 export const EditPanel: React.FC<EditPanelProps> = ({ setEditMode, id }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = useRef(null);
+  const router = useRouter();
 
   return (
     <>
@@ -49,7 +51,10 @@ export const EditPanel: React.FC<EditPanelProps> = ({ setEditMode, id }) => {
           </AlertDialogBody>
           <AlertDialogFooter>
             <Button
-              onClick={() => useDeleteBaseRecipeMutation({ variables: { id } })}
+              onClick={() => {
+                useDeleteBaseRecipeMutation({ variables: { id } });
+                router.push("/");
+              }}
             >
               Yes
             </Button>
