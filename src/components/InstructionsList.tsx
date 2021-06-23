@@ -70,7 +70,7 @@ export const InstructionsList: React.FC<InstructionsListProps> = ({
   return (
     <Box>
       <Text>Instructions</Text>
-      <OrderedList maxWidth='500px'>{instructionMap}</OrderedList>
+      <OrderedList maxWidth="500px">{instructionMap}</OrderedList>
       {addInstruction ? (
         <InstructionInput
           recipeId={id}

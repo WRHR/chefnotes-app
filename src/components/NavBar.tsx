@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { Box, Button, Flex, Center, Text } from "@chakra-ui/react";
+import { Button, Flex, Center, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { MeQuery, useLogoutMutation, useMeQuery } from "../generated/graphql";
+import { useLogoutMutation, useMeQuery } from "../generated/graphql";
 import { useApolloClient } from "@apollo/client";
 
 interface NavBarProps {}
