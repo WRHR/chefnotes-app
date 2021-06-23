@@ -1,5 +1,5 @@
 import { Button } from "@chakra-ui/button";
-import { Link, List, ListItem } from "@chakra-ui/layout";
+import { List, ListItem } from "@chakra-ui/layout";
 import { Layout } from "../components/Layout";
 import { RecipeCard } from "../components/RecipeCard";
 import { SearchBar } from "../components/SearchBar";

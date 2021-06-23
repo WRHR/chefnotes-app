@@ -1,4 +1,4 @@
-import { Box, Text } from "@chakra-ui/layout";
+import { Text } from "@chakra-ui/layout";
 import React from "react";
 import { IngredientList } from "../../components/IngredientList";
 import { InstructionsList } from "../../components/InstructionsList";
