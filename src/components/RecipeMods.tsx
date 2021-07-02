@@ -22,7 +22,7 @@ export const RecipeMods: React.FC<RecipeModsProps> = ({ recipeId }) => {
   });
 
   const modList = data?.findRecipeMods.map((mod) => {
-    return <ListItem>{mod.name}<Button as='link' >View Modification</Button></ListItem>;
+    return <ListItem>{mod.name}<Button as='link' >View</Button></ListItem>;
   });
 
   return (
