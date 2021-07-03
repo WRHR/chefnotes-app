@@ -5,7 +5,7 @@ import {colors} from '../theme/colors'
 export type WrapperVariant = "small" | "regular";
 interface WrapperProps {
   variant?: WrapperVariant;
-  background:string
+  background:Number
 }
 
 export const Wrapper: React.FC<WrapperProps> = ({ children, variant, background }) => {
