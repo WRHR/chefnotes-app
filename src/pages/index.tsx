@@ -23,7 +23,7 @@ export default function Homepage() {
   }
 
   return (
-    <Layout>
+    <Layout background='primary'>
       <SearchBar recipes={data?.userBaseRecipes} />
       <List maxWidth="500px">{userRecipesMap}</List>
       <Button as="link" href="/recipe/NewRecipe">

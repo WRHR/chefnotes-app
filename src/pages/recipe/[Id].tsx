@@ -22,7 +22,7 @@ export const Recipe = ({}) => {
   }
 
   return (
-    <Layout>
+    <Layout background='primary'>
       <Text>{data.baseRecipe.name}</Text>
       <RecipeMods recipeId={data.baseRecipe.id} />
       <IngredientList id={data.baseRecipe.id} original={true} />
