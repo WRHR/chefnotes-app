@@ -3,7 +3,7 @@ import { NavBar } from "./NavBar";
 import { Wrapper } from "./Wrapper";
 
 interface LayoutProps {
-  background:string
+  background:'primary'|'secondary'
 }
 
 export const Layout: React.FC<LayoutProps> = ({ children,  background }) => {
