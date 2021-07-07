@@ -6,13 +6,14 @@ import { Form, Formik } from "formik";
 import { toErrorMap } from "../utils/toErrorMap";
 import { InputField } from "../components/InputField";
 import { Heading } from "../components/Heading";
+import {colors} from '../theme/colors'
 
 const register: React.FC = ({}) => {
   const router = useRouter();
   const [register] = useRegisterMutation();
 
   return (
-    <Center>
+    <Center backgroundColor={colors['secondary']}>
       <Box maxW="500px">
         <Heading />
         <Formik

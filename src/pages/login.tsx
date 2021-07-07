@@ -6,6 +6,7 @@ import { InputField } from "../components/InputField";
 import { useRouter } from "next/router";
 import { toErrorMap } from "../utils/toErrorMap";
 import { Heading } from "../components/Heading";
+import {colors} from '../theme/colors'
 
 interface Values {
   usernameOrEmail: string;
@@ -16,7 +17,7 @@ const login: React.FC = ({}) => {
   const router = useRouter();
   const [login] = useLoginMutation();
   return (
-    <Center>
+    <Center backgroundColor={colors['secondary']}>
       <Box maxW="500px">
         <Heading />
         <Formik
