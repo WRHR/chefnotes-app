@@ -7,7 +7,7 @@ const client = new ApolloClient({
 function App({ Component, pageProps }: any) {
   return (
     <ApolloProvider client={client}>
-      <div className="App">
+      <div className="App" color='white'>
         <Component {...pageProps} />
       </div>
     </ApolloProvider>
