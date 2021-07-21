@@ -34,7 +34,7 @@ export const InstructionsList: React.FC<InstructionsListProps> = ({
   }
 
   if (!data?.recipeInstructions) {
-    return <div>Could not find recipe instructions</div>;
+    return <div>Could not find recipe instructions, try reloading the recipe</div>;
   }
   useEffect(() => {
     useRecipeIngredientsQuery({ variables: { id, original } });

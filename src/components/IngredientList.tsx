@@ -29,7 +29,7 @@ export const IngredientList: React.FC<IngredientListProps> = ({
   }
 
   if (!data?.recipeIngredients) {
-    return <div>Could not find ingredients</div>;
+    return <div>Could not find ingredients, try reloading recipe</div>;
   }
   useEffect(() => {
     useRecipeInstructionsQuery({ variables: { id, original } });

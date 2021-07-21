@@ -6,7 +6,7 @@ interface HeadingProps {}
 export const Heading: React.FC<HeadingProps> = ({}) => {
   return (
     <Center>
-      <Text fontSize="large" align='center'>ChefNotes</Text>
+      <Text fontSize="large" align='center'>Chef Notes</Text>
     </Center>
   );
 };
