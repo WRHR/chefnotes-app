@@ -44,7 +44,7 @@ export const EditPanel: React.FC<EditPanelProps> = ({ setEditMode, id }) => {
       >
         <AlertDialogOverlay />
         <AlertDialogContent>
-          <AlertDialogHeader>Delete Recipe?</AlertDialogHeader>
+          {/* <AlertDialogHeader>Delete Recipe?</AlertDialogHeader> */}
           <AlertDialogCloseButton />
           <AlertDialogBody>
             Are you sure you want to delete this recipe?
